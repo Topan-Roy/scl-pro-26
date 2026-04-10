@@ -1,7 +1,14 @@
-import Link from "next/link";
-import { sharedNoticeBoard, sharedSidebarCalendar } from "@/data/site";
-import shared from "../inner-page.module.css";
-import styles from "./page.module.css";
+import {
+  InnerHero,
+  InnerSidebar,
+  featureBodyClass,
+  leftColumnClass,
+  sectionBarClass,
+  shellLayoutClass,
+  shellMainClass,
+  surfaceClass,
+  whiteCardClass,
+} from "../inner-page-ui";
 
 const heroSlides = [
   "https://picsum.photos/seed/admission-hero-1/1200/500",
@@ -34,7 +41,7 @@ const admissionSteps = [
     text: "ভর্তি ফরম পূরণ করে প্রয়োজনীয় কাগজপত্রসহ অফিসে জমা দিন।",
   },
   {
-    title: "ধাপ ৩: যাচাই ও নিশ্চয়ন",
+    title: "ধাপ ৩: যাচাই ও নিশ্চিতন",
     text: "অফিস যাচাই শেষে ভর্তি ও ক্লাস শুরুর নির্দেশনা প্রদান করবে।",
   },
 ];
@@ -74,93 +81,79 @@ const supportCards = [
 
 export default function AdmissionPage() {
   return (
-    <main className={shared.main}>
-      <section className={styles.heroShowcase}>
-        <div className={styles.heroTrack}>
-          {heroSlides.map((image, index) => (
-            <article
-              className={styles.heroCard}
-              key={image}
-              style={{
-                backgroundImage: `linear-gradient(180deg, rgba(0,0,0,0.08), rgba(0,0,0,0.22)), url('${image}')`,
-              }}
-            >
-              <span>{index + 1}</span>
-            </article>
-          ))}
-        </div>
-        <div className={styles.heroCounter}>
-          <span>1</span>
-          <span>2</span>
-          <span className={styles.activeSlide}>3</span>
-          <span>4</span>
-          <span>5</span>
-          <span>6</span>
-          <span>7</span>
-          <span>8</span>
-        </div>
-      </section>
+    <main className={shellMainClass}>
+      <InnerHero activeSlide={2} slides={heroSlides} />
 
-      <section className={styles.layout}>
-        <div className={styles.leftCol}>
-          <section className={styles.featurePanel}>
-            <div className={styles.sectionBar}>ভর্তি তথ্য</div>
-            <div className={styles.featureBody}>
-              <div className={styles.featureCopy}>
-                <p className={styles.kicker}>ADMISSION</p>
-                <h1>স্বচ্ছ প্রক্রিয়ায় ভর্তি, সহায়তায় সবসময় প্রস্তুত অফিস</h1>
-                <p>
-                  আপনার ভর্তি যাত্রা সহজ করতে আমরা যোগ্যতা, কাগজপত্র, ফি এবং পরবর্তী
-                  ধাপগুলো পরিষ্কারভাবে সাজিয়ে দিয়েছি।
+      <section className={shellLayoutClass}>
+        <div className={leftColumnClass}>
+          <section className={surfaceClass}>
+            <div className={sectionBarClass}>ভর্তি তথ্য</div>
+            <div className={featureBodyClass}>
+              <div className="max-w-[60ch]">
+                <p className="text-[0.78rem] font-extrabold tracking-[0.08em] text-[#1d6a3e]">ADMISSION</p>
+                <h1 className="mt-2 text-[clamp(1.45rem,3vw,2.25rem)] leading-[1.16] text-[#124a74]">
+                  স্বচ্ছ প্রক্রিয়ায় ভর্তি, সহায়তায় সবসময় প্রস্তুত অফিস
+                </h1>
+                <p className="mt-2.5 leading-[1.7] text-[#274b63]">
+                  আপনার ভর্তি যাত্রা সহজ করতে আমরা যোগ্যতা, কাগজপত্র, ফি এবং পরবর্তী ধাপগুলো
+                  পরিষ্কারভাবে সাজিয়ে দিয়েছি।
                 </p>
               </div>
 
-              <div className={styles.stepGrid}>
+              <div className="mt-3.5 grid grid-cols-3 gap-2.5 max-[900px]:grid-cols-1">
                 {admissionSteps.map((step) => (
-                  <article className={styles.stepCard} key={step.title}>
-                    <h3>{step.title}</h3>
-                    <p>{step.text}</p>
+                  <article className={whiteCardClass} key={step.title}>
+                    <h3 className="text-base font-semibold text-[#1d6a3e]">{step.title}</h3>
+                    <p className="mt-2 leading-[1.6] text-[#28412f]">{step.text}</p>
                   </article>
                 ))}
               </div>
             </div>
           </section>
 
-          <section className={styles.twoCol}>
-            <article className={styles.contentPanel}>
-              <div className={styles.sectionBar}>যোগ্যতা</div>
-              <ul className={styles.listBody}>
+          <section className="grid grid-cols-2 gap-2.5 max-[900px]:grid-cols-1">
+            <article className={surfaceClass}>
+              <div className={sectionBarClass}>যোগ্যতা</div>
+              <ul className="grid gap-2 bg-[#f4f4f4] px-4 pt-3.5 pb-4 pl-8">
                 {eligibilityPoints.map((item) => (
-                  <li key={item}>{item}</li>
+                  <li className="leading-[1.58] text-[#23342a]" key={item}>
+                    {item}
+                  </li>
                 ))}
               </ul>
             </article>
 
-            <article className={styles.contentPanel}>
-              <div className={styles.sectionBar}>প্রয়োজনীয় কাগজপত্র</div>
-              <ul className={styles.listBody}>
+            <article className={surfaceClass}>
+              <div className={sectionBarClass}>প্রয়োজনীয় কাগজপত্র</div>
+              <ul className="grid gap-2 bg-[#f4f4f4] px-4 pt-3.5 pb-4 pl-8">
                 {documents.map((item) => (
-                  <li key={item}>{item}</li>
+                  <li className="leading-[1.58] text-[#23342a]" key={item}>
+                    {item}
+                  </li>
                 ))}
               </ul>
             </article>
           </section>
 
-          <section className={styles.contentPanel} id="scholarship">
-            <div className={styles.sectionBar}>ফি তালিকা</div>
-            <div className={styles.tableWrap}>
-              <table className={styles.table}>
+          <section className={surfaceClass} id="scholarship">
+            <div className={sectionBarClass}>ফি তালিকা</div>
+            <div className="bg-[#f4f4f4] p-3">
+              <table className="w-full border-collapse bg-white">
                 <thead>
                   <tr>
-                    <th>ফি এর ধরন</th>
-                    <th>পরিমাণ</th>
+                    <th className="border border-[rgba(27,42,24,0.14)] bg-[#f0fde2] p-2.5 text-left text-[0.9rem] text-[#1c633d]">
+                      ফি এর ধরন
+                    </th>
+                    <th className="border border-[rgba(27,42,24,0.14)] bg-[#f0fde2] p-2.5 text-left text-[0.9rem] text-[#1c633d]">
+                      পরিমাণ
+                    </th>
                   </tr>
                 </thead>
                 <tbody>
                   {feeRows.map((row) => (
                     <tr key={row.type}>
-                      <td>{row.type}</td>
-                      <td>{row.amount}</td>
+                      <td className="border border-[rgba(27,42,24,0.14)] p-2.5 text-[#23342a]">{row.type}</td>
+                      <td className="border border-[rgba(27,42,24,0.14)] p-2.5 text-[#23342a]">{row.amount}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -168,63 +161,20 @@ export default function AdmissionPage() {
             </div>
           </section>
 
-          <section className={styles.contentPanel}>
-            <div className={styles.sectionBar}>ভর্তি সহায়তা</div>
-            <div className={styles.supportGrid}>
+          <section className={surfaceClass}>
+            <div className={sectionBarClass}>ভর্তি সহায়তা</div>
+            <div className="grid grid-cols-2 gap-2.5 bg-[#f4f4f4] p-3 max-[900px]:grid-cols-1">
               {supportCards.map((item) => (
-                <article className={styles.supportCard} key={item.title}>
-                  <h3>{item.title}</h3>
-                  <p>{item.text}</p>
+                <article className={whiteCardClass} key={item.title}>
+                  <h3 className="text-base font-semibold text-[#1d6a3e]">{item.title}</h3>
+                  <p className="mt-2 leading-[1.6] text-[#28412f]">{item.text}</p>
                 </article>
               ))}
             </div>
           </section>
         </div>
 
-        <aside className={styles.rightCol}>
-          <section className={styles.sidePanel}>
-            <h3>নোটিশ বোর্ড</h3>
-            <ul className={styles.noticeList}>
-              {sharedNoticeBoard.map((item) => (
-                <li key={`${item.date}-${item.text}`}>
-                  <span>{item.date}</span>
-                  <p>{item.text}</p>
-                </li>
-              ))}
-            </ul>
-          </section>
-
-          <section className={styles.quickLinks}>
-            {quickLinks.map((item) => (
-              <Link href={item.href} key={item.label}>
-                <span>{item.label}</span>
-                <b>⚙</b>
-              </Link>
-            ))}
-          </section>
-
-          <section className={styles.sidePanel}>
-            <h3>{sharedSidebarCalendar.title}</h3>
-            <table className={styles.calendar}>
-              <thead>
-                <tr>
-                  {sharedSidebarCalendar.weekdays.map((day) => (
-                    <th key={day}>{day}</th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody>
-                {sharedSidebarCalendar.rows.map((row, idx) => (
-                  <tr key={idx}>
-                    {row.map((cell, index) => (
-                      <td key={`${idx}-${index}`}>{cell}</td>
-                    ))}
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </section>
-        </aside>
+        <InnerSidebar quickLinks={quickLinks} />
       </section>
     </main>
   );

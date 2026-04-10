@@ -24,9 +24,19 @@ function isExternal(href: string): boolean {
   return href.startsWith("http://") || href.startsWith("https://");
 }
 
+function getSubmenuId(label: string): string {
+  return `submenu-${label.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`;
+}
+
 export function SiteHeader() {
   const pathname = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+
+  function closeNavigation() {
+    setIsMenuOpen(false);
+    setOpenDropdown(null);
+  }
 
   return (
     <header className={styles.shell}>
@@ -66,7 +76,17 @@ export function SiteHeader() {
         <button
           className={styles.menuButton}
           type="button"
-          onClick={() => setIsMenuOpen((current) => !current)}
+          onClick={() => {
+            setIsMenuOpen((current) => {
+              const next = !current;
+
+              if (!next) {
+                setOpenDropdown(null);
+              }
+
+              return next;
+            });
+          }}
           aria-expanded={isMenuOpen}
           aria-controls="main-navigation-list"
         >
@@ -79,19 +99,48 @@ export function SiteHeader() {
         >
           {mainNav.map((item) => (
             <li className={styles.navItem} key={item.label}>
-              <Link
-                className={`${styles.navLink} ${isActive(pathname, item) ? styles.active : ""}`}
-                href={item.href}
-                onClick={() => setIsMenuOpen(false)}
-              >
-                {item.label}
-              </Link>
+              <div className={styles.navLinkRow}>
+                <Link
+                  className={`${styles.navLink} ${isActive(pathname, item) ? styles.active : ""}`}
+                  href={item.href}
+                  onClick={closeNavigation}
+                >
+                  {item.label}
+                </Link>
+
+                {item.children ? (
+                  <button
+                    type="button"
+                    className={styles.dropdownToggle}
+                    aria-expanded={openDropdown === item.label}
+                    aria-controls={getSubmenuId(item.label)}
+                    onClick={() =>
+                      setOpenDropdown((current) => (current === item.label ? null : item.label))
+                    }
+                  >
+                    <span className={styles.dropdownToggleText}>Submenu</span>
+                    <span
+                      className={`${styles.dropdownToggleIcon} ${
+                        openDropdown === item.label ? styles.dropdownToggleIconOpen : ""
+                      }`}
+                    />
+                  </button>
+                ) : null}
+              </div>
 
               {item.children ? (
-                <ul className={styles.dropdown}>
+                <ul
+                  className={`${styles.dropdown} ${
+                    openDropdown === item.label ? styles.dropdownOpen : ""
+                  }`}
+                  id={getSubmenuId(item.label)}
+                >
                   {item.children.map((child) => (
                     <li key={child.label}>
-                      <Link href={child.href} onClick={() => setIsMenuOpen(false)}>
+                      <Link
+                        href={child.href}
+                        onClick={closeNavigation}
+                      >
                         {child.label}
                       </Link>
                     </li>

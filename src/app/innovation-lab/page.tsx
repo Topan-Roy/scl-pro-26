@@ -1,8 +1,15 @@
-import Link from "next/link";
 import { ARViewport } from "@/components/ar-viewport";
-import { sharedNoticeBoard, sharedSidebarCalendar } from "@/data/site";
-import shared from "../inner-page.module.css";
-import styles from "./page.module.css";
+import {
+  InnerHero,
+  InnerSidebar,
+  featureBodyClass,
+  leftColumnClass,
+  sectionBarClass,
+  shellLayoutClass,
+  shellMainClass,
+  surfaceClass,
+  whiteCardClass,
+} from "../inner-page-ui";
 
 const heroSlides = [
   "https://picsum.photos/seed/eclass-hero-1/1200/500",
@@ -49,148 +56,72 @@ const importantLinks = [
 
 export default function InnovationLabPage() {
   return (
-    <main className={shared.main}>
-      <section className={styles.heroShowcase}>
-        <div className={styles.heroTrack}>
-          {heroSlides.map((image, index) => (
-            <article
-              className={styles.heroCard}
-              key={image}
-              style={{
-                backgroundImage: `linear-gradient(180deg, rgba(0,0,0,0.08), rgba(0,0,0,0.22)), url('${image}')`,
-              }}
-            >
-              <span>{index + 1}</span>
-            </article>
-          ))}
-        </div>
-        <div className={styles.heroCounter}>
-          <span>1</span>
-          <span>2</span>
-          <span>3</span>
-          <span className={styles.activeSlide}>4</span>
-          <span>5</span>
-          <span>6</span>
-          <span>7</span>
-          <span>8</span>
-        </div>
-      </section>
+    <main className={shellMainClass}>
+      <InnerHero activeSlide={3} slides={heroSlides} />
 
-      <section className={styles.layout}>
-        <div className={styles.leftCol}>
-          <section className={styles.featurePanel}>
-            <div className={styles.sectionBar}>E-Class</div>
-            <div className={styles.featureBody}>
-              <div className={styles.featureCopy}>
-                <p className={styles.kicker}>INNOVATION LAB</p>
-                <h1>ডিজিটাল ক্লাস, স্কিল প্র্যাকটিস আর AR অভিজ্ঞতা একই প্ল্যাটফর্মে</h1>
-                <p>
-                  এই page-এ online learning, skills portal এবং আপনার project-এর
-                  existing AR demo একসাথে দেখানো হয়েছে।
+      <section className={shellLayoutClass}>
+        <div className={leftColumnClass}>
+          <section className={surfaceClass}>
+            <div className={sectionBarClass}>E-Class</div>
+            <div className={featureBodyClass}>
+              <div className="max-w-[60ch]">
+                <p className="text-[0.78rem] font-extrabold tracking-[0.08em] text-[#1d6a3e]">INNOVATION LAB</p>
+                <h1 className="mt-2 text-[clamp(1.45rem,3vw,2.25rem)] leading-[1.16] text-[#124a74]">
+                  ডিজিটাল ক্লাস, স্কিল প্র্যাকটিস আর AR অভিজ্ঞতা একই প্ল্যাটফর্মে
+                </h1>
+                <p className="mt-2.5 leading-[1.7] text-[#274b63]">
+                  এই page-এ online learning, skills portal এবং আপনার project-এর existing AR demo
+                  একসাথে দেখানো হয়েছে।
                 </p>
               </div>
 
-              <div className={styles.featureGrid}>
+              <div className="mt-3.5 grid grid-cols-3 gap-2.5 max-[900px]:grid-cols-1">
                 {eClassFeatures.map((item) => (
-                  <article className={styles.featureCard} key={item.title}>
-                    <h3>{item.title}</h3>
-                    <p>{item.text}</p>
+                  <article className={whiteCardClass} key={item.title}>
+                    <h3 className="text-base font-semibold text-[#1d6a3e]">{item.title}</h3>
+                    <p className="mt-2 leading-[1.6] text-[#28412f]">{item.text}</p>
                   </article>
                 ))}
               </div>
             </div>
           </section>
 
-          <section className={styles.twoCol}>
-            <article className={styles.contentPanel}>
-              <div className={styles.sectionBar}>কিভাবে ব্যবহার করা হয়</div>
-              <ul className={styles.listBody}>
+          <section className="grid grid-cols-2 gap-2.5 max-[900px]:grid-cols-1">
+            <article className={surfaceClass}>
+              <div className={sectionBarClass}>কিভাবে ব্যবহার করা হয়</div>
+              <ul className="grid gap-2 bg-[#f4f4f4] px-4 pt-3.5 pb-4 pl-8">
                 {labUses.map((item) => (
-                  <li key={item}>{item}</li>
+                  <li className="leading-[1.58] text-[#23342a]" key={item}>
+                    {item}
+                  </li>
                 ))}
               </ul>
             </article>
 
-            <article className={styles.contentPanel}>
-              <div className={styles.sectionBar}>ডেমো সম্পর্কে</div>
-              <div className={styles.textBody}>
-                <p>
-                  Compatible mobile browser হলে immersive AR session চালু করা যাবে।
-                  Desktop user-রাও animated 3D scene preview দেখতে পারবেন।
+            <article className={surfaceClass}>
+              <div className={sectionBarClass}>ডেমো সম্পর্কে</div>
+              <div className="grid gap-2.5 bg-[#f4f4f4] p-3.5">
+                <p className="leading-[1.68] text-[#28412f]">
+                  Compatible mobile browser হলে immersive AR session চালু করা যাবে। Desktop
+                  user-রাও animated 3D scene preview দেখতে পারবেন।
                 </p>
-                <p>
-                  এই module future online practical class, virtual lab demo এবং
-                  student project showcase-এর জন্য ব্যবহার করা যাবে।
+                <p className="leading-[1.68] text-[#28412f]">
+                  এই module future online practical class, virtual lab demo এবং student project
+                  showcase-এর জন্য ব্যবহার করা যাবে।
                 </p>
               </div>
             </article>
           </section>
 
-          <section className={styles.contentPanel}>
-            <div className={styles.sectionBar}>AR / WebXR Demo</div>
-            <div className={styles.viewportWrap}>
+          <section className={surfaceClass}>
+            <div className={sectionBarClass}>AR / WebXR Demo</div>
+            <div className="bg-[linear-gradient(180deg,#f9fcff,#f1f8ff)] p-3.5 max-[640px]:p-[14px]">
               <ARViewport />
             </div>
           </section>
         </div>
 
-        <aside className={styles.rightCol}>
-          <section className={styles.sidePanel}>
-            <h3>নোটিশ বোর্ড</h3>
-            <ul className={styles.noticeList}>
-              {sharedNoticeBoard.map((item) => (
-                <li key={`${item.date}-${item.text}`}>
-                  <span>{item.date}</span>
-                  <p>{item.text}</p>
-                </li>
-              ))}
-            </ul>
-          </section>
-
-          <section className={styles.quickLinks}>
-            {quickLinks.map((item) => (
-              <Link href={item.href} key={item.label}>
-                <span>{item.label}</span>
-                <b>⚙</b>
-              </Link>
-            ))}
-          </section>
-
-          <section className={styles.sidePanel}>
-            <h3>{sharedSidebarCalendar.title}</h3>
-            <table className={styles.calendar}>
-              <thead>
-                <tr>
-                  {sharedSidebarCalendar.weekdays.map((day) => (
-                    <th key={day}>{day}</th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody>
-                {sharedSidebarCalendar.rows.map((row, idx) => (
-                  <tr key={idx}>
-                    {row.map((cell, index) => (
-                      <td key={`${idx}-${index}`}>{cell}</td>
-                    ))}
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </section>
-
-          <section className={styles.sidePanel}>
-            <h3>গুরুত্বপূর্ণ লিংক</h3>
-            <ul className={styles.impLinks}>
-              {importantLinks.map((item) => (
-                <li key={item.label}>
-                  <a href={item.href} rel="noopener noreferrer" target="_blank">
-                    {item.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </section>
-        </aside>
+        <InnerSidebar importantLinks={importantLinks} quickLinks={quickLinks} />
       </section>
     </main>
   );

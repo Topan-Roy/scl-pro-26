@@ -1,7 +1,14 @@
-import Link from "next/link";
-import { instituteIdentity, sharedNoticeBoard, sharedSidebarCalendar } from "@/data/site";
-import shared from "../inner-page.module.css";
-import styles from "./page.module.css";
+import { instituteIdentity } from "@/data/site";
+import {
+  InnerHero,
+  InnerSidebar,
+  leftColumnClass,
+  sectionBarClass,
+  shellLayoutClass,
+  shellMainClass,
+  surfaceClass,
+  whiteCardClass,
+} from "../inner-page-ui";
 
 const heroSlides = [
   "https://picsum.photos/seed/contact-lab-1/1200/500",
@@ -46,142 +53,82 @@ const infoCards = [
 
 export default function ContactPage() {
   return (
-    <main className={shared.main}>
-      <section className={styles.heroShowcase}>
-        <div className={styles.heroTrack}>
-          {heroSlides.map((image, index) => (
-            <article
-              className={styles.heroCard}
-              key={image}
-              style={{
-                backgroundImage: `linear-gradient(180deg, rgba(0,0,0,0.06), rgba(0,0,0,0.18)), url('${image}')`,
-              }}
-            >
-              <span>{index + 1}</span>
-            </article>
-          ))}
-        </div>
-        <div className={styles.heroCounter}>
-          <span>1</span>
-          <span>2</span>
-          <span>3</span>
-          <span className={styles.activeSlide}>4</span>
-          <span>5</span>
-          <span>6</span>
-          <span>7</span>
-          <span>8</span>
-        </div>
-      </section>
+    <main className={shellMainClass}>
+      <InnerHero activeSlide={3} slides={heroSlides} />
 
-      <section className={styles.layout}>
-        <div className={styles.leftCol}>
-          <section className={styles.formShell}>
-            <div className={styles.sectionBar}>যোগাযোগ</div>
-            <div className={styles.formBody}>
-              <div className={styles.formCopy}>
-                <h1>আমাদের সাথে যোগাযোগ করুন</h1>
-                <p>
-                  ভর্তি, হিসাব, একাডেমিক আপডেট অথবা সাধারণ তথ্যের জন্য নিচের ফর্মটি
-                  পূরণ করুন।
+      <section className={shellLayoutClass}>
+        <div className={leftColumnClass}>
+          <section className={surfaceClass}>
+            <div className={sectionBarClass}>যোগাযোগ</div>
+            <div className="min-h-[420px] bg-[linear-gradient(180deg,#8eb4d7,#9bc0df)] px-[18px] pt-[18px] pb-5 max-[640px]:min-h-[360px] max-[640px]:p-[14px]">
+              <div className="max-w-[48ch] text-[#0f2d4e]">
+                <h1 className="text-[clamp(1.35rem,3vw,2.1rem)] leading-[1.15]">আমাদের সাথে যোগাযোগ করুন</h1>
+                <p className="mt-2 leading-[1.65]">
+                  ভর্তি, হিসাব, একাডেমিক আপডেট অথবা সাধারণ তথ্যের জন্য নিচের ফর্মটি পূরণ করুন।
                 </p>
               </div>
 
-              <form className={styles.contactForm}>
-                <label>
+              <form className="mt-[18px] grid w-full max-w-[340px] gap-3.5">
+                <label className="grid gap-1.5 text-[0.98rem] text-[#1a3554]">
                   আপনার নাম
-                  <input type="text" name="name" />
+                  <input
+                    className="w-full border border-[rgba(58,77,96,0.35)] bg-white p-2.5 text-[#16324c]"
+                    name="name"
+                    type="text"
+                  />
                 </label>
 
-                <label>
+                <label className="grid gap-1.5 text-[0.98rem] text-[#1a3554]">
                   আপনার ইমেইল
-                  <input type="email" name="email" />
+                  <input
+                    className="w-full border border-[rgba(58,77,96,0.35)] bg-white p-2.5 text-[#16324c]"
+                    name="email"
+                    type="email"
+                  />
                 </label>
 
-                <label>
+                <label className="grid gap-1.5 text-[0.98rem] text-[#1a3554]">
                   বিষয়
-                  <input type="text" name="subject" />
+                  <input
+                    className="w-full border border-[rgba(58,77,96,0.35)] bg-white p-2.5 text-[#16324c]"
+                    name="subject"
+                    type="text"
+                  />
                 </label>
 
-                <label>
+                <label className="grid gap-1.5 text-[0.98rem] text-[#1a3554]">
                   বার্তা
-                  <textarea name="message" rows={5} />
+                  <textarea
+                    className="w-full resize-y border border-[rgba(58,77,96,0.35)] bg-white p-2.5 text-[#16324c]"
+                    name="message"
+                    rows={5}
+                  />
                 </label>
 
-                <button type="button">পাঠান</button>
+                <button
+                  className="min-h-[30px] w-fit border border-[rgba(17,47,72,0.32)] bg-[#f4f4f4] px-3 font-bold text-[#16324c]"
+                  type="button"
+                >
+                  পাঠান
+                </button>
               </form>
             </div>
           </section>
 
-          <section className={styles.infoPanel} id="faq">
-            <div className={styles.sectionBar}>দ্রুত তথ্য</div>
-            <div className={styles.infoGrid}>
+          <section className={surfaceClass} id="faq">
+            <div className={sectionBarClass}>দ্রুত তথ্য</div>
+            <div className="grid grid-cols-2 gap-2.5 bg-[#ececec] p-3 max-[900px]:grid-cols-1">
               {infoCards.map((item) => (
-                <article className={styles.infoCard} key={item.title}>
-                  <h3>{item.title}</h3>
-                  <p>{item.value}</p>
+                <article className={whiteCardClass} key={item.title}>
+                  <h3 className="text-[0.95rem] font-semibold text-[#1d6a3e]">{item.title}</h3>
+                  <p className="mt-1.5 leading-[1.55] text-[#28412f]">{item.value}</p>
                 </article>
               ))}
             </div>
           </section>
         </div>
 
-        <aside className={styles.rightCol}>
-          <section className={styles.sidePanel}>
-            <h3>নোটিশ বোর্ড</h3>
-            <ul className={styles.noticeList}>
-              {sharedNoticeBoard.map((item) => (
-                <li key={`${item.date}-${item.text}`}>
-                  <span>{item.date}</span>
-                  <p>{item.text}</p>
-                </li>
-              ))}
-            </ul>
-          </section>
-
-          <section className={styles.quickLinks}>
-            {quickLinks.map((item) => (
-              <Link href={item.href} key={item.label}>
-                <span>{item.label}</span>
-                <b>⚙</b>
-              </Link>
-            ))}
-          </section>
-
-          <section className={styles.sidePanel}>
-            <h3>{sharedSidebarCalendar.title}</h3>
-            <table className={styles.calendar}>
-              <thead>
-                <tr>
-                  {sharedSidebarCalendar.weekdays.map((day) => (
-                    <th key={day}>{day}</th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody>
-                {sharedSidebarCalendar.rows.map((row, idx) => (
-                  <tr key={idx}>
-                    {row.map((cell, index) => (
-                      <td key={`${idx}-${index}`}>{cell}</td>
-                    ))}
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </section>
-
-          <section className={styles.sidePanel}>
-            <h3>গুরুত্বপূর্ণ লিংক</h3>
-            <ul className={styles.impLinks}>
-              {importantLinks.map((item) => (
-                <li key={item.label}>
-                  <a href={item.href} rel="noopener noreferrer" target="_blank">
-                    {item.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </section>
-        </aside>
+        <InnerSidebar importantLinks={importantLinks} quickLinks={quickLinks} />
       </section>
     </main>
   );

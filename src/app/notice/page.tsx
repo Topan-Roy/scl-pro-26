@@ -1,7 +1,12 @@
-import Link from "next/link";
-import { sharedNoticeBoard, sharedSidebarCalendar } from "@/data/site";
-import shared from "../inner-page.module.css";
-import styles from "./page.module.css";
+import {
+  InnerHero,
+  InnerSidebar,
+  leftColumnClass,
+  sectionBarClass,
+  shellLayoutClass,
+  shellMainClass,
+  surfaceClass,
+} from "../inner-page-ui";
 
 const heroSlides = [
   "https://picsum.photos/seed/result-hero-1/1200/500",
@@ -38,48 +43,32 @@ const importantLinks = [
 
 export default function NoticePage() {
   return (
-    <main className={shared.main}>
-      <section className={styles.heroShowcase}>
-        <div className={styles.heroTrack}>
-          {heroSlides.map((image, index) => (
-            <article
-              className={styles.heroCard}
-              key={image}
-              style={{
-                backgroundImage: `linear-gradient(180deg, rgba(0,0,0,0.08), rgba(0,0,0,0.22)), url('${image}')`,
-              }}
-            >
-              <span>{index + 1}</span>
-            </article>
-          ))}
-        </div>
-        <div className={styles.heroCounter}>
-          <span>1</span>
-          <span>2</span>
-          <span>3</span>
-          <span>4</span>
-          <span className={styles.activeSlide}>5</span>
-          <span>6</span>
-          <span>7</span>
-          <span>8</span>
-        </div>
-      </section>
+    <main className={shellMainClass}>
+      <InnerHero activeSlide={4} slides={heroSlides} />
 
-      <section className={styles.layout}>
-        <div className={styles.leftCol}>
-          <section className={styles.formShell}>
-            <div className={styles.sectionBar}>Exam Result</div>
-            <div className={styles.formBody}>
-              <form className={styles.resultForm}>
-                <label>
+      <section className={shellLayoutClass}>
+        <div className={leftColumnClass}>
+          <section className={surfaceClass}>
+            <div className={sectionBarClass}>Exam Result</div>
+            <div className="min-h-[320px] bg-[linear-gradient(180deg,#8eb4d7,#9bbde0)] px-5 pt-[26px] pb-5 max-[640px]:p-[14px]">
+              <form className="grid w-full max-w-[380px] gap-3.5 text-[#16324c]">
+                <label className="grid gap-1.5 text-[0.96rem]">
                   * Please Enter Registration (xxyyzzz) :
-                  <input type="text" name="registration" />
+                  <input
+                    className="min-h-6 w-full max-w-[220px] border border-[rgba(58,77,96,0.35)] bg-white px-2 py-0.5 text-[#16324c] max-[640px]:max-w-none"
+                    name="registration"
+                    type="text"
+                  />
                 </label>
 
-                <label>
+                <label className="grid gap-1.5 text-[0.96rem]">
                   ** Department
-                  <select name="department" defaultValue="">
-                    <option value="" disabled>
+                  <select
+                    className="min-h-6 w-full max-w-[220px] border border-[rgba(58,77,96,0.35)] bg-white px-2 py-0.5 text-[#16324c] max-[640px]:max-w-none"
+                    defaultValue=""
+                    name="department"
+                  >
+                    <option disabled value="">
                       Select Department
                     </option>
                     {departments.map((item) => (
@@ -90,10 +79,14 @@ export default function NoticePage() {
                   </select>
                 </label>
 
-                <label>
+                <label className="grid gap-1.5 text-[0.96rem]">
                   ** Semester
-                  <select name="semester" defaultValue="">
-                    <option value="" disabled>
+                  <select
+                    className="min-h-6 w-full max-w-[220px] border border-[rgba(58,77,96,0.35)] bg-white px-2 py-0.5 text-[#16324c] max-[640px]:max-w-none"
+                    defaultValue=""
+                    name="semester"
+                  >
+                    <option disabled value="">
                       Select Semester
                     </option>
                     {semesters.map((item) => (
@@ -104,10 +97,14 @@ export default function NoticePage() {
                   </select>
                 </label>
 
-                <label>
+                <label className="grid gap-1.5 text-[0.96rem]">
                   * Term :
-                  <select name="term" defaultValue="">
-                    <option value="" disabled>
+                  <select
+                    className="min-h-6 w-full max-w-[220px] border border-[rgba(58,77,96,0.35)] bg-white px-2 py-0.5 text-[#16324c] max-[640px]:max-w-none"
+                    defaultValue=""
+                    name="term"
+                  >
+                    <option disabled value="">
                       Select Term
                     </option>
                     {terms.map((item) => (
@@ -118,10 +115,14 @@ export default function NoticePage() {
                   </select>
                 </label>
 
-                <label>
+                <label className="grid gap-1.5 text-[0.96rem]">
                   ** Session
-                  <select name="session" defaultValue="">
-                    <option value="" disabled>
+                  <select
+                    className="min-h-6 w-full max-w-[220px] border border-[rgba(58,77,96,0.35)] bg-white px-2 py-0.5 text-[#16324c] max-[640px]:max-w-none"
+                    defaultValue=""
+                    name="session"
+                  >
+                    <option disabled value="">
                       Select Session
                     </option>
                     {sessions.map((item) => (
@@ -132,69 +133,18 @@ export default function NoticePage() {
                   </select>
                 </label>
 
-                <button type="button">Search</button>
+                <button
+                  className="mt-0.5 min-h-[34px] w-[100px] border border-[rgba(17,47,72,0.32)] bg-[#f4f4f4] text-[#16324c]"
+                  type="button"
+                >
+                  Search
+                </button>
               </form>
             </div>
           </section>
         </div>
 
-        <aside className={styles.rightCol}>
-          <section className={styles.sidePanel}>
-            <h3>নোটিশ বোর্ড</h3>
-            <ul className={styles.noticeList}>
-              {sharedNoticeBoard.map((item) => (
-                <li key={`${item.date}-${item.text}`}>
-                  <span>{item.date}</span>
-                  <p>{item.text}</p>
-                </li>
-              ))}
-            </ul>
-          </section>
-
-          <section className={styles.quickLinks}>
-            {quickLinks.map((item) => (
-              <Link href={item.href} key={item.label}>
-                <span>{item.label}</span>
-                <b>⚙</b>
-              </Link>
-            ))}
-          </section>
-
-          <section className={styles.sidePanel}>
-            <h3>{sharedSidebarCalendar.title}</h3>
-            <table className={styles.calendar}>
-              <thead>
-                <tr>
-                  {sharedSidebarCalendar.weekdays.map((day) => (
-                    <th key={day}>{day}</th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody>
-                {sharedSidebarCalendar.rows.map((row, idx) => (
-                  <tr key={idx}>
-                    {row.map((cell, index) => (
-                      <td key={`${idx}-${index}`}>{cell}</td>
-                    ))}
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </section>
-
-          <section className={styles.sidePanel}>
-            <h3>গুরুত্বপূর্ণ লিংক</h3>
-            <ul className={styles.impLinks}>
-              {importantLinks.map((item) => (
-                <li key={item.label}>
-                  <a href={item.href} rel="noopener noreferrer" target="_blank">
-                    {item.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </section>
-        </aside>
+        <InnerSidebar importantLinks={importantLinks} quickLinks={quickLinks} />
       </section>
     </main>
   );

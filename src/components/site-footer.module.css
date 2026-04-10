@@ -1,6 +1,6 @@
 .shell {
-  width: calc(100% - 56px);
-  margin: 10px auto 14px;
+  width: 100%;
+  margin: 10px 0 14px;
 }
 
 .top {
@@ -73,7 +73,7 @@
 
 @media (max-width: 920px) {
   .shell {
-    width: calc(100% - 20px);
+    margin-inline: 0;
   }
 
   .top {

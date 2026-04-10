@@ -1,18 +1,19 @@
 import Link from "next/link";
+import { programQuickLinks } from "@/data/programs";
 import { sharedNoticeBoard, sharedSidebarCalendar } from "@/data/site";
 import styles from "./page.module.css";
 
 const technologyTiles = [
-  { title: "Civil Engineering", tone: "blue" },
-  { title: "Electrical Engineering", tone: "pink" },
-  { title: "Computer Engineering", tone: "purple" },
-  { title: "Mechanical Engineering", tone: "blue" },
-  { title: "Architecture", tone: "pink" },
-  { title: "Apparel Manufacturing", tone: "purple" },
-  { title: "Wet Processing", tone: "purple" },
-  { title: "Fashion Designing", tone: "pink" },
-  { title: "Fabric Manufacturing", tone: "blue" },
-  { title: "Yarn Manufacturing", tone: "blue" },
+  { title: "Civil Engineering", tone: "blue", href: "/programs/civil-engineering" },
+  { title: "Electrical Engineering", tone: "pink", href: "/programs/electrical-engineering" },
+  { title: "Computer Engineering", tone: "purple", href: "/programs/computer-engineering" },
+  { title: "Mechanical Engineering", tone: "blue", href: "/programs/mechanical-engineering" },
+  { title: "Architecture", tone: "pink", href: "/programs/architecture" },
+  { title: "Apparel Manufacturing", tone: "purple", href: "/programs/apparel-manufacturing" },
+  { title: "Wet Processing", tone: "purple", href: "/programs/wet-processing" },
+  { title: "Fashion Designing", tone: "pink", href: "/programs/fashion-designing" },
+  { title: "Fabric Manufacturing", tone: "blue", href: "/programs/fabric-manufacturing" },
+  { title: "Yarn Manufacturing", tone: "blue", href: "/programs/yarn-manufacturing" },
 ];
 
 const noticeBoard = sharedNoticeBoard;
@@ -62,6 +63,23 @@ const legacyCalendarRows = [
 ];
 
 void legacyCalendarRows;
+void programQuickLinks;
+
+const admissionGallery = [
+  {
+    title: "Practical Lab",
+    image: "https://picsum.photos/seed/bgc-practical-lab/900/1200",
+  },
+  {
+    title: "Campus Building",
+    image:
+      "https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=900&q=80",
+  },
+  {
+    title: "Achievement Ceremony",
+    image: "https://picsum.photos/seed/bgc-achievement-ceremony/900/1200",
+  },
+];
 
 export default function HomePage() {
   return (
@@ -113,12 +131,13 @@ export default function HomePage() {
             </div>
             <div className={styles.techGrid}>
               {technologyTiles.map((item) => (
-                <article
+                <Link
                   className={`${styles.techTile} ${styles[item.tone]}`}
+                  href={item.href}
                   key={item.title}
                 >
                   {item.title}
-                </article>
+                </Link>
               ))}
             </div>
           </section>
@@ -146,9 +165,19 @@ export default function HomePage() {
                 </div>
 
                 <div className={styles.galleryLine}>
-                  <article className={styles.galleryCard}>Practical Lab</article>
-                  <article className={styles.galleryCard}>Campus Building</article>
-                  <article className={styles.galleryCard}>Achievement Ceremony</article>
+                  {admissionGallery.map((item) => (
+                    <article className={styles.galleryCard} key={item.title}>
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        className={styles.galleryImage}
+                        src={item.image}
+                        alt={item.title}
+                        loading="lazy"
+                        decoding="async"
+                      />
+                      <span>{item.title}</span>
+                    </article>
+                  ))}
                 </div>
               </div>
             </div>
