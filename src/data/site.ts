@@ -59,10 +59,10 @@ export const mainNav: NavItem[] = [
     label: "TECHNOLOGY",
     href: "/departments",
     children: [
-      { label: "Computer Technology", href: "/departments#computer" },
-      { label: "Electrical Technology", href: "/departments#electrical" },
-      { label: "Civil Technology", href: "/departments#civil" },
-      { label: "Mechanical Technology", href: "/departments#mechanical" },
+      { label: "Computer Technology", href: "/departments/computer" },
+      { label: "Electrical Technology", href: "/departments/electrical" },
+      { label: "Civil Technology", href: "/departments/civil" },
+      { label: "Mechanical Technology", href: "/departments/mechanical" },
     ],
   },
   { label: "RESULT", href: "/notice" },
@@ -86,10 +86,10 @@ export const socialLinks = [
 
 export const quickFooterLinks = [
   { label: "Home Page", href: "/" },
-  { label: "Electrical Technology", href: "/departments#electrical" },
-  { label: "Mechanical Technology", href: "/departments#mechanical" },
-  { label: "Computer Technology", href: "/departments#computer" },
-  { label: "Civil Technology", href: "/departments#civil" },
+  { label: "Electrical Technology", href: "/departments/electrical" },
+  { label: "Mechanical Technology", href: "/departments/mechanical" },
+  { label: "Computer Technology", href: "/departments/computer" },
+  { label: "Civil Technology", href: "/departments/civil" },
 ];
 
 export const footerLinkGroups = [
