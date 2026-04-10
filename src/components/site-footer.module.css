@@ -1,0 +1,82 @@
+.shell {
+  width: calc(100% - 56px);
+  margin: 10px auto 14px;
+}
+
+.top {
+  border: 1px solid rgba(15, 67, 24, 0.28);
+  border-radius: 10px;
+  background:
+    radial-gradient(circle at top right, rgba(255, 206, 96, 0.18), transparent 42%),
+    linear-gradient(180deg, rgba(251, 255, 242, 0.98), rgba(243, 255, 237, 0.95));
+  box-shadow: var(--surface-shadow);
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  gap: 12px;
+  padding: 14px;
+}
+
+.address h2 {
+  font-family: "Bahnschrift", "Aptos Display", "Aptos", sans-serif;
+  font-size: clamp(1.06rem, 2vw, 1.4rem);
+  color: #155934;
+}
+
+.address p {
+  margin-top: 8px;
+  color: rgba(27, 44, 24, 0.78);
+  line-height: 1.65;
+}
+
+.quickLinks h3 {
+  color: #205f3f;
+  font-size: 1.05rem;
+}
+
+.quickLinks ul {
+  margin-top: 8px;
+  list-style: none;
+  display: grid;
+  gap: 8px;
+}
+
+.quickLinks a {
+  color: #227548;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.bottom {
+  margin-top: 8px;
+  border: 1px solid rgba(255, 206, 96, 0.35);
+  border-radius: 8px;
+  background: linear-gradient(180deg, #103e17, #082f10);
+  min-height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 10px;
+  box-shadow: var(--surface-shadow);
+}
+
+.bottom p {
+  color: rgba(246, 255, 230, 0.92);
+  font-size: 0.84rem;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .quickLinks a:hover {
+    text-decoration: underline;
+  }
+}
+
+@media (max-width: 920px) {
+  .shell {
+    width: calc(100% - 20px);
+  }
+
+  .top {
+    grid-template-columns: 1fr;
+  }
+}
