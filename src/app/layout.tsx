@@ -8,6 +8,11 @@ export const metadata: Metadata = {
   title: "TM Engineering College, Dhaka",
   description:
     "Official portal for TM Engineering College, Dhaka with admission, academic programs, notice board and important links.",
+  icons: {
+    icon: "/icon.svg",
+    shortcut: "/icon.svg",
+    apple: "/icon.svg",
+  },
 };
 
 export default function RootLayout({
