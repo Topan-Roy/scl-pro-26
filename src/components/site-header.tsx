@@ -59,7 +59,15 @@ export function SiteHeader() {
 
       <div className={styles.brandRow}>
         <Link className={styles.brand} href="/">
-          <span className={styles.logoMark}>{instituteIdentity.shortName}</span>
+          <span className={styles.logoMark} aria-hidden="true">
+            <span className={styles.logoRing}>
+              <span className={styles.logoCore}>
+                <span className={styles.logoGlow} />
+                <span className={styles.logoInitials}>{instituteIdentity.shortName}</span>
+              </span>
+            </span>
+            <span className={styles.logoRibbon}>Est. 2001</span>
+          </span>
           <span className={styles.brandText}>
             <small>Official Website</small>
             <strong>{instituteIdentity.fullName}</strong>
