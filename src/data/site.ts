@@ -158,10 +158,10 @@ export const sharedSidebarCalendar: SidebarCalendar = {
 };
 
 export const instituteIdentity = {
-  shortName: "BGC",
-  fullName: "Bekti Goto College",
+  shortName: "TMEC",
+  fullName: "TM Engineering College, Dhaka",
   tagline: "Private College and Professional Education Portal",
   phone: "+880 1716-000000",
-  email: "info@bektigoto.edu.bd",
+  email: "info@tmecdhaka.edu.bd",
   address: "Dhaka, Bangladesh",
 };

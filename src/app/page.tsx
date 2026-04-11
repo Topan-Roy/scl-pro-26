@@ -51,7 +51,7 @@ const importantLinks = [
   { label: "Directorate of Technical Education", href: "https://techedu.gov.bd" },
   { label: "National Web Portal of Bangladesh", href: "https://bangladesh.gov.bd" },
   { label: "Bangladesh Technical Education Board (BTEB)", href: "https://www.bteb.gov.bd" },
-  { label: "Search Result of Bekti Goto College", href: "/notice" },
+  { label: "Search Result of TM Engineering College, Dhaka", href: "/notice" },
 ];
 
 const calendarRows = sharedSidebarCalendar.rows;
@@ -152,7 +152,7 @@ export default function HomePage() {
                 নিজস্ব ক্যাম্পাসে বৃহত্তর ঢাকার সর্বপ্রথম ও সর্ববৃহৎ
                 শীতাতপ নিয়ন্ত্রিত প্রাইভেট ইঞ্জিনিয়ারিং কলেজ
               </p>
-              <h1>BEKTI GOTO COLLEGE</h1>
+              <h1>TM ENGINEERING COLLEGE DHAKA</h1>
 
               <div className={styles.posterBody}>
                 <div className={styles.discount}>

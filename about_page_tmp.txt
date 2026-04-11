@@ -1,0 +1,208 @@
+﻿"use client";
+
+import Link from "next/link";
+import { useEffect, useState } from "react";
+import { campusImages } from "@/data/site-images";
+import { sharedNoticeBoard, sharedSidebarCalendar } from "@/data/site";
+import styles from "./page.module.css";
+
+type AboutSectionKey = "history" | "rules" | "library" | "hostel";
+
+const sectionOrder: AboutSectionKey[] = ["history", "rules", "library", "hostel"];
+
+const sectionCopy: Record<
+  AboutSectionKey,
+  { title: string; description: string; points: string[] }
+> = {
+  history: {
+    title: "Institute History",
+    description:
+      "TM Engineering College, Dhaka à¦ªà§à¦°à¦¤à¦¿à¦·à§à¦ à¦¾à¦° à¦®à§‚à¦² à¦²à¦•à§à¦·à§à¦¯ à¦›à¦¿à¦² à¦¬à§à¦¯à¦¬à¦¹à¦¾à¦°à¦¿à¦•à¦­à¦¿à¦¤à§à¦¤à¦¿à¦• à¦•à¦¾à¦°à¦¿à¦—à¦°à¦¿ à¦¶à¦¿à¦•à§à¦·à¦¾ à¦›à§œà¦¿à§Ÿà§‡ à¦¦à§‡à¦“à§Ÿà¦¾à¥¤ à¦¸à¦®à§Ÿà§‡à¦° à¦¸à¦¾à¦¥à§‡ à¦¸à¦¾à¦¥à§‡ à¦†à¦§à§à¦¨à¦¿à¦• à¦²à§à¦¯à¦¾à¦¬, à¦¦à¦•à§à¦· à¦¶à¦¿à¦•à§à¦·à¦• à¦à¦¬à¦‚ à¦•à¦°à§à¦®à¦®à§à¦–à§€ à¦•à§‹à¦°à§à¦¸à§‡à¦° à¦¸à¦®à¦¨à§à¦¬à§Ÿà§‡ à¦ªà§à¦°à¦¤à¦¿à¦·à§à¦ à¦¾à¦¨à¦Ÿà¦¿ à¦¶à¦¿à¦•à§à¦·à¦¾à¦°à§à¦¥à§€à¦¦à§‡à¦° à¦œà¦¨à§à¦¯ à¦à¦•à¦Ÿà¦¿ à¦¨à¦¿à¦°à§à¦­à¦°à¦¯à§‹à¦—à§à¦¯ à¦¶à¦¿à¦•à§à¦·à¦¾ à¦ªà¦°à¦¿à¦¬à§‡à¦¶ à¦¤à§ˆà¦°à¦¿ à¦•à¦°à§‡à¦›à§‡à¥¤",
+    points: [
+      "à¦ªà§à¦°à¦¤à¦¿à¦·à§à¦ à¦¾à¦° à¦¶à§à¦°à§ à¦¥à§‡à¦•à§‡à¦‡ à¦¡à¦¿à¦ªà§à¦²à§‹à¦®à¦¾ à¦ªà¦°à§à¦¯à¦¾à§Ÿà§‡à¦° à¦¦à¦•à§à¦·à¦¤à¦¾ à¦‰à¦¨à§à¦¨à§Ÿà¦¨à¦•à§‡ à¦…à¦—à§à¦°à¦¾à¦§à¦¿à¦•à¦¾à¦° à¦¦à§‡à¦“à§Ÿà¦¾ à¦¹à§Ÿà§‡à¦›à§‡à¥¤",
+      "à¦¶à§à¦°à§‡à¦£à¦¿à¦•à¦•à§à¦·à§‡à¦° à¦¶à¦¿à¦•à§à¦·à¦¾à¦° à¦ªà¦¾à¦¶à¦¾à¦ªà¦¾à¦¶à¦¿ à¦¹à¦¾à¦¤à§‡-à¦•à¦²à¦®à§‡ à¦²à§à¦¯à¦¾à¦¬à¦­à¦¿à¦¤à§à¦¤à¦¿à¦• à¦¶à¦¿à¦•à§à¦·à¦¾ à¦šà¦¾à¦²à§ à¦†à¦›à§‡à¥¤",
+      "à¦¶à¦¿à¦²à§à¦ªà¦–à¦¾à¦¤à§‡à¦° à¦šà¦¾à¦¹à¦¿à¦¦à¦¾ à¦…à¦¨à§à¦¯à¦¾à§Ÿà§€ à¦•à§‹à¦°à§à¦¸ à¦“ à¦ªà§à¦°à¦¶à¦¿à¦•à§à¦·à¦£ à¦•à¦¾à¦°à§à¦¯à¦•à§à¦°à¦® à¦¨à¦¿à§Ÿà¦®à¦¿à¦¤ à¦¹à¦¾à¦²à¦¨à¦¾à¦—à¦¾à¦¦ à¦•à¦°à¦¾ à¦¹à§Ÿà¥¤",
+    ],
+  },
+  rules: {
+    title: "Rules And Regulation",
+    description:
+      "à¦ªà§à¦°à¦¤à¦¿à¦·à§à¦ à¦¾à¦¨à§‡à¦° à¦¶à§ƒà¦™à§à¦–à¦²à¦¾, à¦à¦•à¦¾à¦¡à§‡à¦®à¦¿à¦• à¦ªà¦°à¦¿à¦¬à§‡à¦¶ à¦à¦¬à¦‚ à¦¸à¦¬à¦¾à¦° à¦œà¦¨à§à¦¯ à¦à¦•à¦Ÿà¦¿ à¦¨à¦¿à¦°à¦¾à¦ªà¦¦ à¦•à§à¦¯à¦¾à¦®à§à¦ªà¦¾à¦¸ à¦¬à¦œà¦¾à§Ÿ à¦°à¦¾à¦–à¦¤à§‡ à¦•à¦¿à¦›à§ à¦®à§Œà¦²à¦¿à¦• à¦¨à¦¿à§Ÿà¦® à¦®à§‡à¦¨à§‡ à¦šà¦²à¦¾ à¦¬à¦¾à¦§à§à¦¯à¦¤à¦¾à¦®à§‚à¦²à¦•à¥¤",
+    points: [
+      "à¦¶à¦¿à¦•à§à¦·à¦¾à¦°à§à¦¥à§€à¦¦à§‡à¦° à¦¨à¦¿à§Ÿà¦®à¦¿à¦¤ à¦‰à¦ªà¦¸à§à¦¥à¦¿à¦¤à¦¿ à¦à¦¬à¦‚ à¦¨à¦¿à¦°à§à¦§à¦¾à¦°à¦¿à¦¤ à¦ªà§‹à¦¶à¦¾à¦•à¦¬à¦¿à¦§à¦¿ à¦…à¦¨à§à¦¸à¦°à¦£ à¦•à¦°à¦¤à§‡ à¦¹à¦¬à§‡à¥¤",
+      "à¦•à§à¦²à¦¾à¦¸, à¦²à§à¦¯à¦¾à¦¬, à¦…à§à¦¯à¦¾à¦¸à¦¾à¦‡à¦¨à¦®à§‡à¦¨à§à¦Ÿ à¦“ à¦ªà¦°à§€à¦•à§à¦·à¦¾à¦° à¦¸à¦®à§Ÿà¦¸à§‚à¦šà¦¿ à¦®à§‡à¦¨à§‡ à¦šà¦²à¦¾ à¦†à¦¬à¦¶à§à¦¯à¦•à¥¤",
+      "à¦•à§à¦¯à¦¾à¦®à§à¦ªà¦¾à¦¸à§‡ à¦¶à§ƒà¦™à§à¦–à¦²à¦¾à¦­à¦™à§à¦— à¦¬à¦¾ à¦…à¦¸à¦¦à¦¾à¦šà¦°à¦£à§‡à¦° à¦•à§à¦·à§‡à¦¤à§à¦°à§‡ à¦ªà§à¦°à¦¶à¦¾à¦¸à¦¨à¦¿à¦• à¦¬à§à¦¯à¦¬à¦¸à§à¦¥à¦¾ à¦¨à§‡à¦“à§Ÿà¦¾ à¦¹à¦¬à§‡à¥¤",
+    ],
+  },
+  library: {
+    title: "Library",
+    description:
+      "à¦ªà§à¦°à¦¤à¦¿à¦·à§à¦ à¦¾à¦¨à§‡à¦° à¦²à¦¾à¦‡à¦¬à§à¦°à§‡à¦°à¦¿à¦¤à§‡ à¦¬à¦¿à¦­à¦¾à¦—à¦­à¦¿à¦¤à§à¦¤à¦¿à¦• à¦ªà¦¾à¦ à§à¦¯à¦ªà§à¦¸à§à¦¤à¦•, à¦°à§‡à¦«à¦¾à¦°à§‡à¦¨à§à¦¸ à¦¬à¦‡, à¦—à¦¾à¦‡à¦¡à¦²à¦¾à¦‡à¦¨ à¦à¦¬à¦‚ à¦¸à§à¦¬-à¦…à¦§à§à¦¯à§Ÿà¦¨à§‡à¦° à¦‰à¦ªà¦¯à§‹à¦—à§€ à¦ªà¦¾à¦ à¦¸à¦¾à¦®à¦—à§à¦°à§€ à¦¸à¦‚à¦°à¦•à§à¦·à¦¿à¦¤ à¦†à¦›à§‡à¥¤",
+    points: [
+      "à¦¨à¦¿à§Ÿà¦®à¦¿à¦¤ à¦•à§à¦²à¦¾à¦¸ à¦¡à§‡-à¦¤à§‡ à¦¶à¦¿à¦•à§à¦·à¦¾à¦°à§à¦¥à§€à¦°à¦¾ à¦²à¦¾à¦‡à¦¬à§à¦°à§‡à¦°à¦¿ à¦¬à§à¦¯à¦¬à¦¹à¦¾à¦° à¦•à¦°à¦¤à§‡ à¦ªà¦¾à¦°à§‡à¥¤",
+      "à¦¬à¦¿à¦­à¦¿à¦¨à§à¦¨ à¦Ÿà§‡à¦•à¦¨à§‹à¦²à¦œà¦¿à¦° à¦œà¦¨à§à¦¯ à¦†à¦²à¦¾à¦¦à¦¾ à¦°à§‡à¦«à¦¾à¦°à§‡à¦¨à§à¦¸ à¦“ à¦¸à¦¹à¦¾à§Ÿà¦• à¦¬à¦‡ à¦°à§Ÿà§‡à¦›à§‡à¥¤",
+      "à¦ªà¦°à§€à¦•à§à¦·à¦¾ à¦ªà§à¦°à¦¸à§à¦¤à§à¦¤à¦¿ à¦“ à¦ªà§à¦°à¦œà§‡à¦•à§à¦Ÿ à¦•à¦¾à¦œà§‡à¦° à¦œà¦¨à§à¦¯ à¦¨à§€à¦°à¦¬ à¦ªà¦¾à¦ à¦¾à¦—à¦¾à¦° à¦ªà¦°à¦¿à¦¬à§‡à¦¶ à¦¨à¦¿à¦¶à§à¦šà¦¿à¦¤ à¦•à¦°à¦¾ à¦¹à§Ÿà¥¤",
+    ],
+  },
+  hostel: {
+    title: "Hostel",
+    description:
+      "à¦¬à¦¹à¦¿à¦°à¦¾à¦—à¦¤ à¦¶à¦¿à¦•à§à¦·à¦¾à¦°à§à¦¥à§€à¦¦à§‡à¦° à¦œà¦¨à§à¦¯ à¦¹à§‹à¦¸à§à¦Ÿà§‡à¦² à¦¸à¦‚à¦•à§à¦°à¦¾à¦¨à§à¦¤ à¦¤à¦¥à§à¦¯, à¦¸à¦¿à¦Ÿ à¦¬à¦°à¦¾à¦¦à§à¦¦ à¦à¦¬à¦‚ à¦ªà§à¦°à§Ÿà§‹à¦œà¦¨à§€à§Ÿ à¦¸à¦¹à¦¾à§Ÿà¦¤à¦¾ à¦ªà§à¦°à¦¶à¦¾à¦¸à¦¨à¦¿à¦• à¦¦à¦ªà§à¦¤à¦°à§‡à¦° à¦®à¦¾à¦§à§à¦¯à¦®à§‡ à¦¸à¦®à¦¨à§à¦¬à§Ÿ à¦•à¦°à¦¾ à¦¹à§Ÿà¥¤",
+    points: [
+      "à¦¸à¦¿à¦Ÿ à¦¬à¦°à¦¾à¦¦à§à¦¦à§‡à¦° à¦œà¦¨à§à¦¯ à¦†à¦²à¦¾à¦¦à¦¾ à¦†à¦¬à§‡à¦¦à¦¨ à¦“ à¦¯à¦¾à¦šà¦¾à¦‡ à¦ªà§à¦°à¦•à§à¦°à¦¿à§Ÿà¦¾ à¦…à¦¨à§à¦¸à¦°à¦£ à¦•à¦°à¦¾ à¦¹à§Ÿà¥¤",
+      "à¦¬à¦¹à¦¿à¦°à¦¾à¦—à¦¤ à¦“ à¦¦à§‚à¦°à¦¬à¦°à§à¦¤à§€ à¦à¦²à¦¾à¦•à¦¾à¦° à¦¶à¦¿à¦•à§à¦·à¦¾à¦°à§à¦¥à§€à¦°à¦¾ à¦…à¦—à§à¦°à¦¾à¦§à¦¿à¦•à¦¾à¦° à¦­à¦¿à¦¤à§à¦¤à¦¿à¦¤à§‡ à¦¸à¦¹à¦¾à§Ÿà¦¤à¦¾ à¦ªà¦¾à§Ÿà¥¤",
+      "à¦šà§‚à§œà¦¾à¦¨à§à¦¤ à¦­à¦°à§à¦¤à¦¿ à¦¸à¦®à§à¦ªà¦¨à§à¦¨à§‡à¦° à¦ªà¦° à¦¹à§‹à¦¸à§à¦Ÿà§‡à¦² à¦¸à¦‚à¦•à§à¦°à¦¾à¦¨à§à¦¤ à¦¦à¦¿à¦•à¦¨à¦¿à¦°à§à¦¦à§‡à¦¶à¦¨à¦¾ à¦ªà§à¦°à¦¦à¦¾à¦¨ à¦•à¦°à¦¾ à¦¹à§Ÿà¥¤",
+    ],
+  },
+};
+
+const noticeBoard = sharedNoticeBoard;
+const legacyNoticeBoard = [
+  { date: "à§¦à§© à¦¡à¦¿à¦¸à§‡à¦®à§à¦¬à¦° à§¨à§¦à§¨à§ª", text: "à¦¬à¦¾à¦‚à¦²à¦¾à¦¦à§‡à¦¶à§‡à¦° à¦ªà§à¦°à¦¤à¦¿à¦Ÿà¦¿ à¦˜à¦°à¦•à§‡ à¦­à¦¾à¦²à§‹à¦¬à¦¾à¦¸à¦¾à¦° à¦®à¦¾à¦¨à§à¦·à¥¤" },
+  { date: "à§¦à§¨ à¦¡à¦¿à¦¸à§‡à¦®à§à¦¬à¦° à§¨à§¦à§¨à§ª", text: "à¦®à§‡à¦§à¦¾ à¦¬à§ƒà¦¤à§à¦¤à¦¿à¦° à¦¬à¦¿à¦œà§à¦žà¦ªà§à¦¤à¦¿ à¦ªà§à¦°à¦•à¦¾à¦¶à¥¤" },
+  { date: "à§§à§­ à¦«à§‡à¦¬à§à¦°à§à§Ÿà¦¾à¦°à¦¿ à§¨à§¦à§¨à§ª", text: "à¦¬à¦¾à¦°à§à¦·à¦¿à¦• à¦•à§à¦°à§€à§œà¦¾ à¦ªà§à¦°à¦¤à¦¿à¦¯à§‹à¦—à¦¿à¦¤à¦¾ à¦“ à¦¸à¦¾à¦‚à¦¸à§à¦•à§ƒà¦¤à¦¿à¦• à¦¸à¦ªà§à¦¤à¦¾à¦¹à¥¤" },
+  { date: "à§¦à§© à¦œà¦¾à¦¨à§à§Ÿà¦¾à¦°à¦¿ à§¨à§¦à§¨à§ª", text: "Happy New Year 2024" },
+  { date: "à§¨à§¯ à¦œà§à¦¨ à§¨à§¦à§¨à§©", text: "Notice" },
+];
+
+void legacyNoticeBoard;
+
+const sectionLinks = [
+  { label: "Institute History", href: "/about#history" },
+  { label: "Rules And Regulation", href: "/about#rules" },
+  { label: "Library", href: "/about#library" },
+  { label: "Hostel", href: "/about#hostel" },
+];
+
+const calendarRows = sharedSidebarCalendar.rows;
+const legacyCalendarRows = [
+  ["", "à§§", "à§¨", "à§©", "à§ª", "à§«"],
+  ["à§¬", "à§­", "à§®", "à§¯", "à§§à§¦", "à§§à§§", "à§§à§¨"],
+  ["à§§à§©", "à§§à§ª", "à§§à§«", "à§§à§¬", "à§§à§­", "à§§à§®", "à§§à§¯"],
+  ["à§¨à§¦", "à§¨à§§", "à§¨à§¨", "à§¨à§©", "à§¨à§ª", "à§¨à§«", "à§¨à§¬"],
+  ["à§¨à§­", "à§¨à§®", "à§¨à§¯", "à§©à§¦", "", "", ""],
+];
+
+void legacyCalendarRows;
+
+function resolveSection(hash: string): AboutSectionKey {
+  const cleanHash = hash.replace("#", "");
+  if (sectionOrder.includes(cleanHash as AboutSectionKey)) {
+    return cleanHash as AboutSectionKey;
+  }
+
+  return "history";
+}
+
+export default function AboutPage() {
+  const [activeSection, setActiveSection] = useState<AboutSectionKey>("history");
+
+  useEffect(() => {
+    const applyFromHash = () => {
+      setActiveSection(resolveSection(window.location.hash));
+    };
+
+    applyFromHash();
+    window.addEventListener("hashchange", applyFromHash);
+    return () => window.removeEventListener("hashchange", applyFromHash);
+  }, []);
+
+  const activeCopy = sectionCopy[activeSection];
+
+  return (
+    <main className={styles.main}>
+      <section className={styles.breaking}>
+        <span>à¦–à¦¬à¦°</span>
+        <p>à¦ªà§à¦°à¦¤à¦¿à¦·à§à¦ à¦¾à¦¨à§‡à¦° à¦‡à¦¤à¦¿à¦¹à¦¾à¦¸, à¦¨à§€à¦¤à¦¿à¦®à¦¾à¦²à¦¾, à¦²à¦¾à¦‡à¦¬à§à¦°à§‡à¦°à¦¿ à¦“ à¦¹à§‹à¦¸à§à¦Ÿà§‡à¦² à¦¸à¦‚à¦•à§à¦°à¦¾à¦¨à§à¦¤ à¦¤à¦¥à§à¦¯ à¦à¦–à¦¾à¦¨à§‡ à¦ªà¦¾à¦“à§Ÿà¦¾ à¦¯à¦¾à¦¬à§‡à¥¤</p>
+      </section>
+
+      <section className={styles.layout}>
+        <div className={styles.leftCol}>
+          <section className={styles.heroShowcase}>
+            <div
+              className={styles.heroFrame}
+              role="img"
+              aria-label="Institute campus overview"
+              style={{
+                backgroundImage:
+                  `linear-gradient(180deg, rgba(0,0,0,0.06), rgba(0,0,0,0.28)), url('${campusImages[0]}')`,
+              }}
+            />
+            <div className={styles.heroCounter}>
+              <span>1</span>
+              <span>2</span>
+              <span className={styles.activeSlide}>3</span>
+              <span>4</span>
+              <span>5</span>
+              <span>6</span>
+              <span>7</span>
+              <span>8</span>
+            </div>
+          </section>
+
+          {sectionOrder.map((key) => (
+            <span className={styles.anchor} id={key} key={key} />
+          ))}
+
+          <section className={styles.coursePanel}>
+            <h2>{activeCopy.title}</h2>
+            <div className={styles.courseBody}>
+              <p>{activeCopy.description}</p>
+              <ul className={styles.pointList}>
+                {activeCopy.points.map((point) => (
+                  <li key={point}>{point}</li>
+                ))}
+              </ul>
+            </div>
+          </section>
+        </div>
+
+        <aside className={styles.rightCol}>
+          <section className={styles.sidePanel}>
+            <h3>à¦¨à§‹à¦Ÿà¦¿à¦¶ à¦¬à§‹à¦°à§à¦¡</h3>
+            <ul className={styles.noticeList}>
+              {noticeBoard.map((item) => (
+                <li key={`${item.date}-${item.text}`}>
+                  <span>{item.date}</span>
+                  <p>{item.text}</p>
+                </li>
+              ))}
+            </ul>
+          </section>
+
+          <section className={styles.quickLinks}>
+            {sectionLinks.map((item) => (
+              <Link href={item.href} key={item.label}>
+                <span>{item.label}</span>
+                <b>âš™</b>
+              </Link>
+            ))}
+          </section>
+
+          <section className={styles.sidePanel}>
+            <h3>{sharedSidebarCalendar.title}</h3>
+            <table className={styles.calendar}>
+              <thead>
+                <tr>
+                  {sharedSidebarCalendar.weekdays.map((day) => (
+                    <th key={day}>{day}</th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {calendarRows.map((row, idx) => (
+                  <tr key={idx}>
+                    {row.map((cell, index) => (
+                      <td key={`${idx}-${index}`}>{cell}</td>
+                    ))}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </section>
+        </aside>
+      </section>
+    </main>
+  );
+}
+

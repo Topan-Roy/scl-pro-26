@@ -4,9 +4,9 @@ import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 
 export const metadata: Metadata = {
-  title: "Bekti Goto College",
+  title: "TM Engineering College, Dhaka",
   description:
-    "Official portal for Bekti Goto College with admission, academic programs, notice board and important links.",
+    "Official portal for TM Engineering College, Dhaka with admission, academic programs, notice board and important links.",
 };
 
 export default function RootLayout({
