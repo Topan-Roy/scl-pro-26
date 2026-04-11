@@ -98,6 +98,30 @@ a {
   text-decoration: none;
 }
 
+.cursor-trail-layer {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+.cursor-trail-dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 12px;
+  height: 12px;
+  border-radius: 999px;
+  opacity: 0;
+  background:
+    radial-gradient(circle, rgba(255, 250, 208, 0.98) 0, rgba(255, 219, 94, 0.95) 42%, rgba(255, 169, 23, 0.38) 68%, rgba(255, 169, 23, 0) 100%);
+  box-shadow:
+    0 0 10px rgba(255, 211, 92, 0.7),
+    0 0 22px rgba(255, 174, 43, 0.3);
+  will-change: transform, opacity;
+  mix-blend-mode: screen;
+}
+
 .motion-rise {
   animation: floatIn 0.7s ease both;
 }
@@ -134,9 +158,17 @@ a {
   .site-frame {
     width: calc(100% - (var(--page-gutter-mobile) * 2));
   }
+
+  .cursor-trail-layer {
+    display: none;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .cursor-trail-layer {
+    display: none;
+  }
+
   *,
   *::before,
   *::after {
