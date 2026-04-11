@@ -13,6 +13,7 @@
   border-radius: 6px;
   background: linear-gradient(180deg, #0b4b14, #08380f);
   box-shadow: var(--surface-shadow);
+  animation: floatIn 0.55s ease both;
 }
 
 .login {
@@ -47,6 +48,8 @@
   align-items: center;
   justify-content: space-between;
   gap: 12px;
+  animation: floatIn 0.68s ease both;
+  animation-delay: 0.08s;
 }
 
 .brand {
@@ -66,6 +69,9 @@
   color: #17531f;
   font-size: 1rem;
   font-weight: 900;
+  transition:
+    transform 0.22s ease,
+    box-shadow 0.22s ease;
 }
 
 .brandText small {
@@ -104,6 +110,8 @@
   background: linear-gradient(180deg, #2bad15, #1d8e10);
   box-shadow: var(--surface-shadow);
   padding: 4px;
+  animation: floatIn 0.8s ease both;
+  animation-delay: 0.16s;
 }
 
 .menuButton {
@@ -152,6 +160,7 @@
   border: 1px solid rgba(24, 67, 20, 0.28);
   border-radius: 2px;
   transition:
+    transform 0.2s ease,
     color 0.2s ease,
     border-color 0.2s ease,
     background-color 0.2s ease;
@@ -237,7 +246,17 @@
     pointer-events: auto;
   }
 
+  .navLink:hover,
+  .navLinkRow:hover .navLink,
   .navItem:hover > .navLink {
+    color: #ffffff;
+    background: linear-gradient(180deg, #f8ad1d, #ea9300);
+    border-color: #cb7e00;
+    transform: translateY(-1px);
+  }
+
+  .navLinkRow:hover .dropdownToggle,
+  .dropdownToggle:hover {
     color: #ffffff;
     background: linear-gradient(180deg, #f8ad1d, #ea9300);
     border-color: #cb7e00;
@@ -245,6 +264,11 @@
 
   .dropdown a:hover {
     background: rgba(247, 167, 25, 0.15);
+  }
+
+  .brand:hover .logoMark {
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 0 10px 20px rgba(11, 47, 12, 0.18);
   }
 }
 

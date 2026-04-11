@@ -3,7 +3,7 @@ import { departmentHeroSlides, departmentQuickLinks } from "@/data/departments";
 import { sharedNoticeBoard, sharedSidebarCalendar } from "@/data/site";
 
 export const shellMainClass =
-  "mt-2.5 flex w-full flex-col gap-2.5";
+  "motion-rise mt-2.5 flex w-full flex-col gap-2.5";
 
 export const shellLayoutClass =
   "grid grid-cols-[minmax(0,1.8fr)_minmax(320px,0.66fr)] gap-2.5 max-[1180px]:grid-cols-1";
@@ -11,7 +11,7 @@ export const shellLayoutClass =
 export const leftColumnClass = "grid content-start gap-2.5";
 
 export const featurePanelClass =
-  "overflow-hidden rounded-[8px] border border-[rgba(255,186,45,0.65)] bg-white shadow-[var(--surface-shadow)]";
+  "motion-card overflow-hidden rounded-[8px] border border-[rgba(255,186,45,0.65)] bg-white shadow-[var(--surface-shadow)]";
 
 export const sectionBarClass =
   "flex min-h-[34px] w-full items-center border-b border-b-[rgba(13,71,5,0.45)] bg-[linear-gradient(180deg,#3bc908,#1f890d)] px-2.5 text-[1.02rem] font-bold text-white";
@@ -32,11 +32,11 @@ export const pillItemClass =
 
 export function DepartmentsHero() {
   return (
-    <section className="relative overflow-hidden rounded-[8px] border border-[rgba(255,186,45,0.65)] bg-white p-1 shadow-[var(--surface-shadow)]">
+    <section className="motion-card motion-delay-1 relative overflow-hidden rounded-[8px] border border-[rgba(255,186,45,0.65)] bg-white p-1 shadow-[var(--surface-shadow)]">
       <div className="grid grid-cols-4 max-[640px]:grid-cols-1">
         {departmentHeroSlides.map((image, index) => (
           <article
-            className="relative min-h-[190px] border-l border-l-[rgba(255,255,255,0.48)] bg-cover bg-center first:border-l-0 max-[900px]:min-h-[150px] max-[640px]:min-h-[130px] max-[640px]:border-l-0 max-[640px]:border-t max-[640px]:border-t-[rgba(255,255,255,0.48)]"
+            className="relative min-h-[190px] border-l border-l-[rgba(255,255,255,0.48)] bg-cover bg-center transition-transform duration-300 ease-out first:border-l-0 hover:scale-[1.01] max-[900px]:min-h-[150px] max-[640px]:min-h-[130px] max-[640px]:border-l-0 max-[640px]:border-t max-[640px]:border-t-[rgba(255,255,255,0.48)]"
             key={image}
             style={{
               backgroundImage: `linear-gradient(180deg, rgba(0,0,0,0.08), rgba(0,0,0,0.22)), url('${image}')`,
@@ -70,7 +70,7 @@ export function DepartmentsHero() {
 export function DepartmentsSidebar({ currentPath }: { currentPath?: string }) {
   return (
     <aside className="grid content-start gap-2.5">
-      <section className={featurePanelClass}>
+      <section className={`${featurePanelClass} motion-delay-2`}>
         <h3 className={sectionBarClass}>নোটিশ বোর্ড</h3>
         <ul className="list-none bg-[#f3f3f3]">
           {sharedNoticeBoard.map((item) => (
@@ -93,7 +93,7 @@ export function DepartmentsSidebar({ currentPath }: { currentPath?: string }) {
 
           return (
             <Link
-              className={`flex min-h-9 items-center justify-between rounded-[8px] border px-2.5 text-base font-bold text-white shadow-[var(--surface-shadow)] ${
+              className={`motion-card flex min-h-9 items-center justify-between rounded-[8px] border px-2.5 text-base font-bold text-white shadow-[var(--surface-shadow)] transition-all duration-200 ease-out hover:translate-x-[3px] hover:brightness-105 ${
                 isActive
                   ? "border-[rgba(154,94,0,0.52)] bg-[linear-gradient(180deg,#f0ac15,#d48700)]"
                   : "border-[rgba(30,129,7,0.48)] bg-[linear-gradient(180deg,#35be06,#228e0e)]"
@@ -108,7 +108,7 @@ export function DepartmentsSidebar({ currentPath }: { currentPath?: string }) {
         })}
       </section>
 
-      <section className={featurePanelClass}>
+      <section className={`${featurePanelClass} motion-delay-3`}>
         <h3 className={sectionBarClass}>{sharedSidebarCalendar.title}</h3>
         <table className="w-full border-collapse bg-[#efefef]">
           <thead>

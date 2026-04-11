@@ -15,6 +15,7 @@
   grid-template-columns: auto 1fr;
   overflow: hidden;
   box-shadow: var(--surface-shadow);
+  animation: floatIn 0.55s ease both;
 }
 
 .breaking span {
@@ -63,12 +64,15 @@
   overflow: hidden;
   padding: 4px;
   position: relative;
+  animation: floatIn 0.72s ease both;
+  animation-delay: 0.08s;
 }
 
 .heroFrame {
   min-height: 300px;
   background-size: cover;
   background-position: center;
+  animation: drift 8s ease-in-out infinite;
 }
 
 .heroCounter {
@@ -112,6 +116,23 @@
   background: #ffffff;
   box-shadow: var(--surface-shadow);
   overflow: hidden;
+  animation: floatIn 0.8s ease both;
+}
+
+.coursePanel:nth-of-type(2) {
+  animation-delay: 0.12s;
+}
+
+.coursePanel:nth-of-type(3) {
+  animation-delay: 0.18s;
+}
+
+.coursePanel:nth-of-type(4) {
+  animation-delay: 0.24s;
+}
+
+.coursePanel:nth-of-type(5) {
+  animation-delay: 0.3s;
 }
 
 .coursePanel h2 {
@@ -131,6 +152,7 @@
   min-height: 82px;
   padding: 12px 10px;
   background: #ececec;
+  transition: background-color 0.22s ease;
 }
 
 .courseBody p {
@@ -150,6 +172,7 @@
   color: #1f291f;
   font-size: 0.95rem;
   line-height: 1.5;
+  transition: transform 0.2s ease;
 }
 
 .sidePanel h3 {
@@ -209,6 +232,9 @@
   font-size: 1rem;
   font-weight: 700;
   box-shadow: var(--surface-shadow);
+  transition:
+    transform 0.18s ease,
+    filter 0.18s ease;
 }
 
 .quickLinks b {
@@ -237,7 +263,16 @@
 }
 
 @media (hover: hover) and (pointer: fine) {
+  .coursePanel:hover .courseBody {
+    background: #f2f6ef;
+  }
+
+  .coursePanel:hover .pointList li {
+    transform: translateX(2px);
+  }
+
   .quickLinks a:hover {
+    transform: translateX(3px);
     filter: brightness(1.04);
   }
 }

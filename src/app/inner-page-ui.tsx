@@ -7,7 +7,7 @@ export type LinkItem = {
 };
 
 export const shellMainClass =
-  "mt-2.5 flex w-full flex-col gap-2.5";
+  "motion-rise mt-2.5 flex w-full flex-col gap-2.5";
 
 export const shellLayoutClass =
   "grid grid-cols-[minmax(0,1.8fr)_minmax(320px,0.66fr)] gap-2.5 max-[1180px]:grid-cols-1";
@@ -15,7 +15,7 @@ export const shellLayoutClass =
 export const leftColumnClass = "grid content-start gap-2.5";
 
 export const surfaceClass =
-  "overflow-hidden rounded-[8px] border border-[rgba(255,186,45,0.65)] bg-white shadow-[var(--surface-shadow)]";
+  "motion-card overflow-hidden rounded-[8px] border border-[rgba(255,186,45,0.65)] bg-white shadow-[var(--surface-shadow)]";
 
 export const sectionBarClass =
   "flex min-h-[34px] w-full items-center border-b border-b-[rgba(13,71,5,0.45)] bg-[linear-gradient(180deg,#3bc908,#1f890d)] px-2.5 text-[1.02rem] font-bold text-white";
@@ -34,11 +34,11 @@ export function InnerHero({
   activeSlide?: number;
 }) {
   return (
-    <section className="relative overflow-hidden rounded-[8px] border border-[rgba(255,186,45,0.65)] bg-white p-1 shadow-[var(--surface-shadow)]">
+    <section className="motion-card motion-delay-1 relative overflow-hidden rounded-[8px] border border-[rgba(255,186,45,0.65)] bg-white p-1 shadow-[var(--surface-shadow)]">
       <div className="grid grid-cols-4 max-[900px]:grid-cols-2 max-[640px]:grid-cols-1">
         {slides.map((image, index) => (
           <article
-            className="relative min-h-[190px] border-l border-l-[rgba(255,255,255,0.48)] bg-cover bg-center first:border-l-0 max-[900px]:min-h-[150px] max-[640px]:min-h-[130px] max-[640px]:border-l-0 max-[640px]:border-t max-[640px]:border-t-[rgba(255,255,255,0.48)]"
+            className="relative min-h-[190px] border-l border-l-[rgba(255,255,255,0.48)] bg-cover bg-center transition-transform duration-300 ease-out first:border-l-0 hover:scale-[1.01] max-[900px]:min-h-[150px] max-[640px]:min-h-[130px] max-[640px]:border-l-0 max-[640px]:border-t max-[640px]:border-t-[rgba(255,255,255,0.48)]"
             key={image}
             style={{
               backgroundImage: `linear-gradient(180deg, rgba(0,0,0,0.08), rgba(0,0,0,0.22)), url('${image}')`,
@@ -78,7 +78,7 @@ export function InnerSidebar({
 }) {
   return (
     <aside className="grid content-start gap-2.5">
-      <section className={surfaceClass}>
+      <section className={`${surfaceClass} motion-delay-2`}>
         <h3 className={sectionBarClass}>নোটিশ বোর্ড</h3>
         <ul className="list-none bg-[#f3f3f3]">
           {sharedNoticeBoard.map((item) => (
@@ -95,7 +95,7 @@ export function InnerSidebar({
       <section className="grid gap-1.5">
         {quickLinks.map((item) => (
           <Link
-            className="flex min-h-9 items-center justify-between rounded-[8px] border border-[rgba(30,129,7,0.48)] bg-[linear-gradient(180deg,#35be06,#228e0e)] px-2.5 text-base font-bold text-white shadow-[var(--surface-shadow)]"
+            className="motion-card flex min-h-9 items-center justify-between rounded-[8px] border border-[rgba(30,129,7,0.48)] bg-[linear-gradient(180deg,#35be06,#228e0e)] px-2.5 text-base font-bold text-white shadow-[var(--surface-shadow)] transition-all duration-200 ease-out hover:translate-x-[3px] hover:brightness-105"
             href={item.href}
             key={item.label}
           >
@@ -105,7 +105,7 @@ export function InnerSidebar({
         ))}
       </section>
 
-      <section className={surfaceClass}>
+      <section className={`${surfaceClass} motion-delay-3`}>
         <h3 className={sectionBarClass}>{sharedSidebarCalendar.title}</h3>
         <table className="w-full border-collapse bg-[#efefef]">
           <thead>
@@ -138,7 +138,7 @@ export function InnerSidebar({
       </section>
 
       {importantLinks ? (
-        <section className={surfaceClass}>
+        <section className={`${surfaceClass} motion-delay-4`}>
           <h3 className={sectionBarClass}>গুরুত্বপূর্ণ লিংক</h3>
           <ul className="list-none bg-[#f3f3f3]">
             {importantLinks.map((item) => (

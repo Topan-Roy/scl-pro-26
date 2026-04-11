@@ -70,7 +70,7 @@ export function ProgramDetailPage({ program }: ProgramDetailPageProps) {
 
       <section className={shellLayoutClass}>
         <div className={leftColumnClass}>
-          <section className={surfaceClass}>
+          <section className={`${surfaceClass} motion-delay-2`}>
             <div className={sectionBarClass}>{program.title}</div>
 
             <div className={`bg-gradient-to-br ${tone.soft} px-8 py-8 max-[640px]:px-5 max-[640px]:py-5`}>
@@ -85,7 +85,7 @@ export function ProgramDetailPage({ program }: ProgramDetailPageProps) {
 
               <div className="grid grid-cols-[minmax(0,1.2fr)_minmax(300px,0.8fr)] gap-4 max-[980px]:grid-cols-1">
                 <article
-                  className={`rounded-[24px] border bg-white/88 px-8 py-8 shadow-[0_18px_34px_rgba(15,54,88,0.08)] backdrop-blur-sm max-[640px]:px-5 max-[640px]:py-6 ${tone.ring} ${tone.glow}`}
+                  className={`motion-card motion-delay-3 rounded-[24px] border bg-white/88 px-8 py-8 shadow-[0_18px_34px_rgba(15,54,88,0.08)] backdrop-blur-sm transition-transform duration-300 ease-out hover:-translate-y-1 max-[640px]:px-5 max-[640px]:py-6 ${tone.ring} ${tone.glow}`}
                 >
                   <div className="flex flex-wrap items-center gap-2.5 pl-1">
                     <span
@@ -123,7 +123,7 @@ export function ProgramDetailPage({ program }: ProgramDetailPageProps) {
                   <div className="mt-7 grid grid-cols-3 gap-3.5 max-[640px]:grid-cols-1">
                     {stats.map((item) => (
                       <article
-                        className={`rounded-[18px] border bg-white px-5.5 py-5.5 shadow-[0_14px_26px_rgba(12,40,62,0.05)] ${tone.ring}`}
+                        className={`motion-card rounded-[18px] border bg-white px-5.5 py-5.5 shadow-[0_14px_26px_rgba(12,40,62,0.05)] transition-transform duration-300 ease-out hover:-translate-y-1 ${tone.ring}`}
                         key={item.label}
                       >
                         <strong className="block text-[1.75rem] leading-[1.12] text-[#155433]">{item.value}</strong>
@@ -136,9 +136,9 @@ export function ProgramDetailPage({ program }: ProgramDetailPageProps) {
                 </article>
 
                 <div className="grid gap-4">
-                  <article className={`overflow-hidden rounded-[24px] border bg-white ${tone.ring} ${tone.glow}`}>
+                  <article className={`motion-card motion-delay-4 overflow-hidden rounded-[24px] border bg-white ${tone.ring} ${tone.glow}`}>
                     <div
-                      className="min-h-[290px] bg-cover bg-center max-[640px]:min-h-[220px]"
+                      className="min-h-[290px] bg-cover bg-center transition-transform duration-500 ease-out hover:scale-[1.03] max-[640px]:min-h-[220px]"
                       style={{
                         backgroundImage: `linear-gradient(180deg, rgba(8,20,28,0.10), rgba(8,20,28,0.36)), url('${coverImage}')`,
                       }}
@@ -152,7 +152,7 @@ export function ProgramDetailPage({ program }: ProgramDetailPageProps) {
 
                   <div className="grid grid-cols-2 gap-4 max-[640px]:grid-cols-1">
                     <article
-                      className={`rounded-[20px] border bg-white px-6 py-6 shadow-[0_16px_30px_rgba(12,40,62,0.06)] max-[640px]:px-5 max-[640px]:py-5 ${tone.ring}`}
+                      className={`motion-card rounded-[20px] border bg-white px-6 py-6 shadow-[0_16px_30px_rgba(12,40,62,0.06)] transition-transform duration-300 ease-out hover:-translate-y-1 max-[640px]:px-5 max-[640px]:py-5 ${tone.ring}`}
                     >
                       <h3 className="text-base font-semibold text-[#1d6a3e]">শেখার ধরন</h3>
                       <p className="mt-2.5 leading-[1.72] text-[#28412f]">
@@ -161,7 +161,7 @@ export function ProgramDetailPage({ program }: ProgramDetailPageProps) {
                     </article>
 
                     <article
-                      className={`rounded-[20px] border bg-white px-6 py-6 shadow-[0_16px_30px_rgba(12,40,62,0.06)] max-[640px]:px-5 max-[640px]:py-5 ${tone.ring}`}
+                      className={`motion-card rounded-[20px] border bg-white px-6 py-6 shadow-[0_16px_30px_rgba(12,40,62,0.06)] transition-transform duration-300 ease-out hover:-translate-y-1 max-[640px]:px-5 max-[640px]:py-5 ${tone.ring}`}
                     >
                       <h3 className="text-base font-semibold text-[#1d6a3e]">শিক্ষার ফলাফল</h3>
                       <p className="mt-2.5 leading-[1.72] text-[#28412f]">
@@ -174,13 +174,13 @@ export function ProgramDetailPage({ program }: ProgramDetailPageProps) {
             </div>
           </section>
 
-          <section className={surfaceClass}>
+          <section className={`${surfaceClass} motion-delay-3`}>
             <div className={sectionBarClass}>বিস্তারিত তথ্য</div>
 
             <div className="grid gap-5 bg-[linear-gradient(180deg,#f7fbff_0%,#eef6ff_100%)] px-8 py-8 max-[640px]:px-5 max-[640px]:py-5">
               <div className="grid grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] gap-4 max-[980px]:grid-cols-1">
                 <article
-                  className={`rounded-[20px] border bg-white px-7 py-6 shadow-[0_16px_30px_rgba(12,40,62,0.06)] max-[640px]:px-5 max-[640px]:py-5 ${tone.ring}`}
+                  className={`motion-card rounded-[20px] border bg-white px-7 py-6 shadow-[0_16px_30px_rgba(12,40,62,0.06)] transition-transform duration-300 ease-out hover:-translate-y-1 max-[640px]:px-5 max-[640px]:py-5 ${tone.ring}`}
                 >
                   <h3 className="text-[1.02rem] font-semibold text-[#1d6a3e]">প্রোগ্রাম সম্পর্কে</h3>
                   <ul className="mt-4 ml-[18px] grid list-disc gap-3">
@@ -193,13 +193,13 @@ export function ProgramDetailPage({ program }: ProgramDetailPageProps) {
                 </article>
 
                 <article
-                  className={`rounded-[20px] border bg-white px-7 py-6 shadow-[0_16px_30px_rgba(12,40,62,0.06)] max-[640px]:px-5 max-[640px]:py-5 ${tone.ring}`}
+                  className={`motion-card rounded-[20px] border bg-white px-7 py-6 shadow-[0_16px_30px_rgba(12,40,62,0.06)] transition-transform duration-300 ease-out hover:-translate-y-1 max-[640px]:px-5 max-[640px]:py-5 ${tone.ring}`}
                 >
                   <h3 className="text-[1.02rem] font-semibold text-[#1d6a3e]">কেন এই প্রোগ্রাম</h3>
                   <div className="mt-4 grid gap-3">
                     {highlightItems.map((item) => (
                       <div
-                        className={`rounded-[18px] border bg-gradient-to-r p-5 shadow-[0_14px_28px_rgba(12,40,62,0.06)] max-[640px]:p-4 ${tone.soft} ${tone.ring}`}
+                        className={`motion-card rounded-[18px] border bg-gradient-to-r p-5 shadow-[0_14px_28px_rgba(12,40,62,0.06)] transition-transform duration-300 ease-out hover:-translate-y-1 max-[640px]:p-4 ${tone.soft} ${tone.ring}`}
                         key={item.title}
                       >
                         <strong className="block text-sm text-[#155433]">{item.title}</strong>
@@ -212,7 +212,7 @@ export function ProgramDetailPage({ program }: ProgramDetailPageProps) {
 
               <div className="grid grid-cols-2 gap-4 max-[980px]:grid-cols-1">
                 <article
-                  className={`rounded-[20px] border bg-white px-7 py-6 shadow-[0_16px_30px_rgba(12,40,62,0.06)] max-[640px]:px-5 max-[640px]:py-5 ${tone.ring}`}
+                  className={`motion-card rounded-[20px] border bg-white px-7 py-6 shadow-[0_16px_30px_rgba(12,40,62,0.06)] transition-transform duration-300 ease-out hover:-translate-y-1 max-[640px]:px-5 max-[640px]:py-5 ${tone.ring}`}
                 >
                   <div className="flex items-center justify-between gap-2">
                     <h3 className="text-[1.02rem] font-semibold text-[#1d6a3e]">মূল বিষয়সমূহ</h3>
@@ -224,7 +224,7 @@ export function ProgramDetailPage({ program }: ProgramDetailPageProps) {
                   <div className="mt-4 grid gap-3">
                     {program.modules.map((item, index) => (
                       <article
-                        className={`flex items-start gap-3 rounded-[16px] border bg-white px-5 py-4 shadow-[0_12px_24px_rgba(12,40,62,0.04)] ${tone.ring}`}
+                        className={`motion-card flex items-start gap-3 rounded-[16px] border bg-white px-5 py-4 shadow-[0_12px_24px_rgba(12,40,62,0.04)] transition-transform duration-300 ease-out hover:translate-x-1 ${tone.ring}`}
                         key={item}
                       >
                         <span
@@ -244,7 +244,7 @@ export function ProgramDetailPage({ program }: ProgramDetailPageProps) {
                 </article>
 
                 <article
-                  className={`rounded-[20px] border bg-white px-7 py-6 shadow-[0_16px_30px_rgba(12,40,62,0.06)] max-[640px]:px-5 max-[640px]:py-5 ${tone.ring}`}
+                  className={`motion-card rounded-[20px] border bg-white px-7 py-6 shadow-[0_16px_30px_rgba(12,40,62,0.06)] transition-transform duration-300 ease-out hover:-translate-y-1 max-[640px]:px-5 max-[640px]:py-5 ${tone.ring}`}
                 >
                   <div className="flex items-center justify-between gap-2">
                     <h3 className="text-[1.02rem] font-semibold text-[#1d6a3e]">ল্যাব ও প্র্যাকটিস</h3>
@@ -256,7 +256,7 @@ export function ProgramDetailPage({ program }: ProgramDetailPageProps) {
                   <div className="mt-4 grid gap-3">
                     {program.labs.map((item, index) => (
                       <article
-                        className={`flex items-start gap-3 rounded-[16px] border bg-white px-5 py-4 shadow-[0_12px_24px_rgba(12,40,62,0.04)] ${tone.ring}`}
+                        className={`motion-card flex items-start gap-3 rounded-[16px] border bg-white px-5 py-4 shadow-[0_12px_24px_rgba(12,40,62,0.04)] transition-transform duration-300 ease-out hover:translate-x-1 ${tone.ring}`}
                         key={item}
                       >
                         <span
@@ -277,7 +277,7 @@ export function ProgramDetailPage({ program }: ProgramDetailPageProps) {
               </div>
 
               <article
-                className={`rounded-[20px] border bg-white px-7 py-6 shadow-[0_16px_30px_rgba(12,40,62,0.06)] max-[640px]:px-5 max-[640px]:py-5 ${tone.ring}`}
+                className={`motion-card rounded-[20px] border bg-white px-7 py-6 shadow-[0_16px_30px_rgba(12,40,62,0.06)] transition-transform duration-300 ease-out hover:-translate-y-1 max-[640px]:px-5 max-[640px]:py-5 ${tone.ring}`}
               >
                 <div className="flex items-center justify-between gap-2 max-[640px]:flex-col max-[640px]:items-start">
                   <div>
@@ -294,11 +294,11 @@ export function ProgramDetailPage({ program }: ProgramDetailPageProps) {
                 <div className="mt-4 grid grid-cols-3 gap-4 max-[900px]:grid-cols-1">
                   {program.images.map((image, index) => (
                     <article
-                      className={`overflow-hidden rounded-[18px] border bg-white ${tone.ring} ${tone.glow}`}
+                      className={`motion-card overflow-hidden rounded-[18px] border bg-white transition-transform duration-300 ease-out hover:-translate-y-1 ${tone.ring} ${tone.glow}`}
                       key={image}
                     >
                       <div
-                        className="min-h-[220px] bg-cover bg-center"
+                        className="min-h-[220px] bg-cover bg-center transition-transform duration-500 ease-out hover:scale-[1.04]"
                         style={{
                           backgroundImage: `linear-gradient(180deg, rgba(10,21,30,0.08), rgba(10,21,30,0.26)), url('${image}')`,
                         }}
@@ -315,7 +315,7 @@ export function ProgramDetailPage({ program }: ProgramDetailPageProps) {
               </article>
 
               <article
-                className={`rounded-[20px] border bg-white px-7 py-6 shadow-[0_16px_30px_rgba(12,40,62,0.06)] max-[640px]:px-5 max-[640px]:py-5 ${tone.ring}`}
+                className={`motion-card rounded-[20px] border bg-white px-7 py-6 shadow-[0_16px_30px_rgba(12,40,62,0.06)] transition-transform duration-300 ease-out hover:-translate-y-1 max-[640px]:px-5 max-[640px]:py-5 ${tone.ring}`}
               >
                 <div className="grid grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] gap-4 max-[900px]:grid-cols-1">
                   <div>
@@ -328,7 +328,7 @@ export function ProgramDetailPage({ program }: ProgramDetailPageProps) {
                   <div className="flex flex-wrap content-start gap-2.5">
                     {program.careers.map((item) => (
                       <span
-                        className={`inline-flex items-center rounded-full border px-4.5 py-3.5 text-[0.92rem] font-bold leading-[1.45] shadow-[0_10px_20px_rgba(12,40,62,0.05)] ${tone.chip}`}
+                        className={`motion-card inline-flex items-center rounded-full border px-4.5 py-3.5 text-[0.92rem] font-bold leading-[1.45] shadow-[0_10px_20px_rgba(12,40,62,0.05)] transition-transform duration-300 ease-out hover:-translate-y-1 ${tone.chip}`}
                         key={item}
                       >
                         {item}
@@ -339,7 +339,7 @@ export function ProgramDetailPage({ program }: ProgramDetailPageProps) {
               </article>
 
               <article
-                className={`rounded-[22px] border bg-gradient-to-r px-6 py-6 shadow-[0_18px_32px_rgba(12,40,62,0.08)] max-[640px]:px-5 max-[640px]:py-5 ${tone.soft} ${tone.ring}`}
+                className={`motion-card rounded-[22px] border bg-gradient-to-r px-6 py-6 shadow-[0_18px_32px_rgba(12,40,62,0.08)] transition-transform duration-300 ease-out hover:-translate-y-1 max-[640px]:px-5 max-[640px]:py-5 ${tone.soft} ${tone.ring}`}
               >
                 <div className="flex items-center justify-between gap-3 max-[640px]:flex-col max-[640px]:items-start">
                   <div>
