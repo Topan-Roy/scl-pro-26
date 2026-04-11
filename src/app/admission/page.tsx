@@ -9,13 +9,9 @@ import {
   surfaceClass,
   whiteCardClass,
 } from "../inner-page-ui";
+import { commonInnerHeroSlides } from "@/data/site-images";
 
-const heroSlides = [
-  "https://picsum.photos/seed/admission-hero-1/1200/500",
-  "https://picsum.photos/seed/admission-hero-2/1200/500",
-  "https://picsum.photos/seed/admission-hero-3/1200/500",
-  "https://picsum.photos/seed/admission-hero-4/1200/500",
-];
+const heroSlides = commonInnerHeroSlides;
 
 const eligibilityPoints = [
   "এসএসসি বা সমমান পরীক্ষায় উত্তীর্ণ হতে হবে।",

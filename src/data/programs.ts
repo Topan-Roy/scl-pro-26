@@ -1,3 +1,5 @@
+import { programImageGroups } from "@/data/site-images";
+
 export type ProgramTone = "blue" | "pink" | "purple";
 
 export type Program = {
@@ -29,11 +31,7 @@ export const programs: Program[] = [
     modules: ["Surveying", "Construction Materials", "AutoCAD Drafting", "Estimation & Costing"],
     labs: ["Survey Lab", "Materials Test Lab", "CAD Studio", "Site Planning Practice"],
     careers: ["Site Engineer Assistant", "Survey Assistant", "Draftsman", "Estimator"],
-    images: [
-      "https://picsum.photos/seed/program-civil-1/1200/700",
-      "https://picsum.photos/seed/program-civil-2/1200/700",
-      "https://picsum.photos/seed/program-civil-3/1200/700",
-    ],
+    images: programImageGroups.civil,
   },
   {
     slug: "electrical-engineering",
@@ -50,11 +48,7 @@ export const programs: Program[] = [
     modules: ["Circuit Analysis", "Electrical Machines", "Power System", "PLC Basics"],
     labs: ["Circuit Lab", "Machine Lab", "Wiring Workshop", "Safety Drill"],
     careers: ["Electrical Technician", "Maintenance Assistant", "PLC Operator", "Power Plant Support"],
-    images: [
-      "https://picsum.photos/seed/program-electrical-1/1200/700",
-      "https://picsum.photos/seed/program-electrical-2/1200/700",
-      "https://picsum.photos/seed/program-electrical-3/1200/700",
-    ],
+    images: programImageGroups.electrical,
   },
   {
     slug: "computer-engineering",
@@ -71,11 +65,7 @@ export const programs: Program[] = [
     modules: ["Programming", "Database", "Networking", "Web Development"],
     labs: ["Programming Lab", "Hardware Lab", "Networking Practice", "Project Studio"],
     careers: ["Junior Developer", "IT Support Engineer", "Network Support", "Database Assistant"],
-    images: [
-      "https://picsum.photos/seed/program-computer-1/1200/700",
-      "https://picsum.photos/seed/program-computer-2/1200/700",
-      "https://picsum.photos/seed/program-computer-3/1200/700",
-    ],
+    images: programImageGroups.computer,
   },
   {
     slug: "mechanical-engineering",
@@ -92,11 +82,7 @@ export const programs: Program[] = [
     modules: ["Machine Tools", "Manufacturing Process", "CAD/CAM", "Thermal Engineering Basics"],
     labs: ["Machine Shop", "Fitting Practice", "Maintenance Workshop", "Design Lab"],
     careers: ["Workshop Technician", "Machine Operator", "Maintenance Technician", "Production Support"],
-    images: [
-      "https://picsum.photos/seed/program-mechanical-1/1200/700",
-      "https://picsum.photos/seed/program-mechanical-2/1200/700",
-      "https://picsum.photos/seed/program-mechanical-3/1200/700",
-    ],
+    images: programImageGroups.mechanical,
   },
   {
     slug: "architecture",
@@ -113,11 +99,7 @@ export const programs: Program[] = [
     modules: ["Architectural Drafting", "Building Planning", "Design Studio", "Presentation Techniques"],
     labs: ["Drawing Studio", "Model Workshop", "CAD Corner", "Design Review Session"],
     careers: ["Architectural Draftsman", "Design Assistant", "3D Visualization Assistant", "Planning Support"],
-    images: [
-      "https://picsum.photos/seed/program-architecture-1/1200/700",
-      "https://picsum.photos/seed/program-architecture-2/1200/700",
-      "https://picsum.photos/seed/program-architecture-3/1200/700",
-    ],
+    images: programImageGroups.architecture,
   },
   {
     slug: "apparel-manufacturing",
@@ -134,11 +116,7 @@ export const programs: Program[] = [
     modules: ["Production Process", "Line Balancing", "Merchandising Basics", "Quality Control"],
     labs: ["Apparel Workshop", "Process Planning Desk", "Quality Check Practice", "Factory Simulation"],
     careers: ["Production Assistant", "Merchandising Support", "Quality Checker", "Line Supervisor Trainee"],
-    images: [
-      "https://picsum.photos/seed/program-apparel-1/1200/700",
-      "https://picsum.photos/seed/program-apparel-2/1200/700",
-      "https://picsum.photos/seed/program-apparel-3/1200/700",
-    ],
+    images: programImageGroups.apparel,
   },
   {
     slug: "wet-processing",
@@ -155,11 +133,7 @@ export const programs: Program[] = [
     modules: ["Dyeing Basics", "Finishing Process", "Textile Chemistry", "Process Control"],
     labs: ["Wet Process Lab", "Chemical Handling Practice", "Shade Matching Session", "Quality Review"],
     careers: ["Dyeing Operator Support", "Wet Process Technician", "Quality Assistant", "Finishing Supervisor Trainee"],
-    images: [
-      "https://picsum.photos/seed/program-wet-1/1200/700",
-      "https://picsum.photos/seed/program-wet-2/1200/700",
-      "https://picsum.photos/seed/program-wet-3/1200/700",
-    ],
+    images: programImageGroups.wet,
   },
   {
     slug: "fashion-designing",
@@ -176,11 +150,7 @@ export const programs: Program[] = [
     modules: ["Fashion Illustration", "Styling", "Trend Study", "Design Presentation"],
     labs: ["Design Studio", "Illustration Practice", "Mood Board Session", "Presentation Review"],
     careers: ["Fashion Design Assistant", "Styling Assistant", "Creative Coordinator", "Sample Development Support"],
-    images: [
-      "https://picsum.photos/seed/program-fashion-1/1200/700",
-      "https://picsum.photos/seed/program-fashion-2/1200/700",
-      "https://picsum.photos/seed/program-fashion-3/1200/700",
-    ],
+    images: programImageGroups.fashion,
   },
   {
     slug: "fabric-manufacturing",
@@ -197,11 +167,7 @@ export const programs: Program[] = [
     modules: ["Fabric Structure", "Weaving Basics", "Knitting Basics", "Production Planning"],
     labs: ["Fabric Analysis Lab", "Production Flow Practice", "Quality Review", "Textile Process Session"],
     careers: ["Fabric Production Assistant", "Quality Inspector", "Process Support", "Mill Planning Trainee"],
-    images: [
-      "https://picsum.photos/seed/program-fabric-1/1200/700",
-      "https://picsum.photos/seed/program-fabric-2/1200/700",
-      "https://picsum.photos/seed/program-fabric-3/1200/700",
-    ],
+    images: programImageGroups.fabric,
   },
   {
     slug: "yarn-manufacturing",
@@ -218,11 +184,7 @@ export const programs: Program[] = [
     modules: ["Spinning Basics", "Yarn Quality", "Process Sequence", "Mill Production Fundamentals"],
     labs: ["Spinning Lab", "Quality Measurement Practice", "Production Workflow Session", "Mill Process Review"],
     careers: ["Spinning Operator Support", "Yarn Quality Assistant", "Production Trainee", "Mill Supervisor Support"],
-    images: [
-      "https://picsum.photos/seed/program-yarn-1/1200/700",
-      "https://picsum.photos/seed/program-yarn-2/1200/700",
-      "https://picsum.photos/seed/program-yarn-3/1200/700",
-    ],
+    images: programImageGroups.yarn,
   },
 ];
 

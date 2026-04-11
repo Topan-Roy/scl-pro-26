@@ -1,3 +1,8 @@
+import {
+  departmentHeroSlides as sharedDepartmentHeroSlides,
+  departmentImageGroups,
+} from "@/data/site-images";
+
 export type DepartmentId = "computer" | "electrical" | "civil" | "mechanical";
 
 export type Department = {
@@ -15,12 +20,7 @@ export type Department = {
   images: string[];
 };
 
-export const departmentHeroSlides = [
-  "https://picsum.photos/seed/dept-hero-1/1200/500",
-  "https://picsum.photos/seed/dept-hero-2/1200/500",
-  "https://picsum.photos/seed/dept-hero-3/1200/500",
-  "https://picsum.photos/seed/dept-hero-4/1200/500",
-];
+export const departmentHeroSlides = sharedDepartmentHeroSlides;
 
 export const departmentHighlights = [
   {
@@ -56,11 +56,7 @@ export const departments: Department[] = [
       { label: "শেখার ধরন", value: "Project Based" },
       { label: "ক্যারিয়ার", value: "Software & IT Support" },
     ],
-    images: [
-      "https://picsum.photos/seed/computer-tech-1/900/620",
-      "https://picsum.photos/seed/computer-tech-2/900/620",
-      "https://picsum.photos/seed/computer-tech-3/900/620",
-    ],
+    images: departmentImageGroups.computer,
   },
   {
     id: "electrical",
@@ -80,11 +76,7 @@ export const departments: Department[] = [
       { label: "শেখার ধরন", value: "Hands-on Practice" },
       { label: "ক্যারিয়ার", value: "Power & Maintenance" },
     ],
-    images: [
-      "https://picsum.photos/seed/electrical-tech-1/900/620",
-      "https://picsum.photos/seed/electrical-tech-2/900/620",
-      "https://picsum.photos/seed/electrical-tech-3/900/620",
-    ],
+    images: departmentImageGroups.electrical,
   },
   {
     id: "civil",
@@ -104,11 +96,7 @@ export const departments: Department[] = [
       { label: "শেখার ধরন", value: "Field Practice" },
       { label: "ক্যারিয়ার", value: "Construction & Design" },
     ],
-    images: [
-      "https://picsum.photos/seed/civil-tech-1/900/620",
-      "https://picsum.photos/seed/civil-tech-2/900/620",
-      "https://picsum.photos/seed/civil-tech-3/900/620",
-    ],
+    images: departmentImageGroups.civil,
   },
   {
     id: "mechanical",
@@ -128,11 +116,7 @@ export const departments: Department[] = [
       { label: "শেখার ধরন", value: "Workshop Centered" },
       { label: "ক্যারিয়ার", value: "Production & Maintenance" },
     ],
-    images: [
-      "https://picsum.photos/seed/mechanical-tech-1/900/620",
-      "https://picsum.photos/seed/mechanical-tech-2/900/620",
-      "https://picsum.photos/seed/mechanical-tech-3/900/620",
-    ],
+    images: departmentImageGroups.mechanical,
   },
 ];
 

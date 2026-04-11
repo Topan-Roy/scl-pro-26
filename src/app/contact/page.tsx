@@ -1,4 +1,5 @@
 import { instituteIdentity } from "@/data/site";
+import { commonInnerHeroSlides } from "@/data/site-images";
 import {
   InnerHero,
   InnerSidebar,
@@ -10,12 +11,7 @@ import {
   whiteCardClass,
 } from "../inner-page-ui";
 
-const heroSlides = [
-  "https://picsum.photos/seed/contact-lab-1/1200/500",
-  "https://picsum.photos/seed/contact-lab-2/1200/500",
-  "https://picsum.photos/seed/contact-lab-3/1200/500",
-  "https://picsum.photos/seed/contact-lab-4/1200/500",
-];
+const heroSlides = commonInnerHeroSlides;
 
 const quickLinks = [
   { label: "ক্লাস রুটিন", href: "/academics#curriculum" },

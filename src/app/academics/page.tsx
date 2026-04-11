@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { campusImages } from "@/data/site-images";
 import { sharedNoticeBoard, sharedSidebarCalendar } from "@/data/site";
 import styles from "./page.module.css";
 
@@ -117,7 +118,7 @@ export default function AcademicsPage() {
               aria-label="Academics campus building"
               style={{
                 backgroundImage:
-                  "linear-gradient(180deg, rgba(0,0,0,0.06), rgba(0,0,0,0.28)), url('https://picsum.photos/seed/academics-campus/1600/720')",
+                  `linear-gradient(180deg, rgba(0,0,0,0.06), rgba(0,0,0,0.28)), url('${campusImages[1]}')`,
               }}
             />
             <div className={styles.heroCounter}>

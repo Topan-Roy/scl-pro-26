@@ -7,13 +7,9 @@ import {
   shellMainClass,
   surfaceClass,
 } from "../inner-page-ui";
+import { commonInnerHeroSlides } from "@/data/site-images";
 
-const heroSlides = [
-  "https://picsum.photos/seed/result-hero-1/1200/500",
-  "https://picsum.photos/seed/result-hero-2/1200/500",
-  "https://picsum.photos/seed/result-hero-3/1200/500",
-  "https://picsum.photos/seed/result-hero-4/1200/500",
-];
+const heroSlides = commonInnerHeroSlides;
 
 const departments = [
   "কম্পিউটার টেকনোলজি",

@@ -1,21 +1,22 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { commonInnerHeroSlides } from "@/data/site-images";
 import { sharedNoticeBoard, sharedSidebarCalendar } from "@/data/site";
 import styles from "./page.module.css";
 
 const heroSlides = [
   {
     title: "Electronics Lab Session",
-    image: "https://picsum.photos/seed/admin-lab/1200/700",
+    image: commonInnerHeroSlides[0],
   },
   {
     title: "Industry Visit Program",
-    image: "https://picsum.photos/seed/admin-visit/1200/700",
+    image: commonInnerHeroSlides[1],
   },
   {
     title: "Practical Workshop",
-    image: "https://picsum.photos/seed/admin-work/1200/700",
+    image: commonInnerHeroSlides[2],
   },
 ];
 

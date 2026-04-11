@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { programQuickLinks } from "@/data/programs";
+import { admissionGalleryImages, homeHeroSlides } from "@/data/site-images";
 import { sharedNoticeBoard, sharedSidebarCalendar } from "@/data/site";
 import styles from "./page.module.css";
 
@@ -32,15 +33,15 @@ const classWidgets = ["Class Routine", "Sylabus", "Exam Routine", "Result"];
 const heroSlides = [
   {
     title: "Field Survey Training",
-    image: "https://picsum.photos/seed/bgc-field/1200/700",
+    image: homeHeroSlides[0],
   },
   {
     title: "Practical Safety Session",
-    image: "https://picsum.photos/seed/bgc-lab/1200/700",
+    image: homeHeroSlides[1],
   },
   {
     title: "Industrial Exposure Visit",
-    image: "https://picsum.photos/seed/bgc-campus/1200/700",
+    image: homeHeroSlides[2],
   },
 ];
 
@@ -68,16 +69,15 @@ void programQuickLinks;
 const admissionGallery = [
   {
     title: "Practical Lab",
-    image: "https://picsum.photos/seed/bgc-practical-lab/900/1200",
+    image: admissionGalleryImages.practicalLab,
   },
   {
     title: "Campus Building",
-    image:
-      "https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=900&q=80",
+    image: admissionGalleryImages.campusBuilding,
   },
   {
     title: "Achievement Ceremony",
-    image: "https://picsum.photos/seed/bgc-achievement-ceremony/900/1200",
+    image: admissionGalleryImages.achievementCeremony,
   },
 ];
 
